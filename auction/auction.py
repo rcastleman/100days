@@ -1,34 +1,35 @@
-# from replit import clear
+from os import system, name
 from art import logo
+
+def clear():
+    if name == 'nt':
+        _ =system('cls')
+    else:
+        _ = system('clear')
 
 # print(logo)
 
-auction_dict = {'Tom':100,'Bob':50}
+def find_winner(bidding_record):
+    highest_bid = 0
+    winner = ""
+    for bidder in bidding_record:
+        bid_amount = int(bidding_record[bidder])
+        if bid_amount > highest_bid:
+            highest_bid = bid_amount
+            winner = bidder
+    print(f"The winner is {winner} with a bid of {highest_bid}")
+       
 
-def find_winner(auction_dict):
-    winner = {'name':0}
-    for bidder in auction_dict:
-        if bidder[1] > winner[1]:
-            winner[0] = bidder[0]
-            winner[1] = bidder[1]
-    print(winner)
+bids = {}
+bidding_finished = False
 
-find_winner(auction_dict)
-
-# def run_auction():
-    
-#     name = input("Name: ")
-#     bid_price = input("Bid Price: ")
-#     auction_dict["name"] = name
-#     auction_dict["bid price"] = bid_price
-#     choice = input("Is there another bidder?").lower()
-#     if choice == "no":
-#         print(f"the bidders are {auction_dict}")
-#         # print("Let's find a winner...")
-#         # find_winner()
-#         return auction_dict
-#     elif choice == "yes":
-    
-#         # clear()
-
-# run_auction()
+while bidding_finished == False:
+    name = input("Name: ")
+    price = input("Bid Price: ")
+    bids[name] = price
+    should_continue = input("Any other users to bid (yes or no)?").lower()
+    if should_continue == "no":
+        bidding_finished = True
+        print(find_winner(bids))
+    elif should_continue == "yes":
+        clear()
