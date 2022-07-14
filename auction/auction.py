@@ -1,30 +1,34 @@
-from replit import clear
+# from replit import clear
 from art import logo
-#HINT: You can call clear() to clear the output in the console.
 
-print(logo)
+# print(logo)
 
-def find_winner(dict):
-    high_bidder = {'name':'bid'}
-    for name in dict:
-        if name['bid'] > high_bidder['name']
-        high_bidder['name'] = name
-        high_bidder['bid']
+auction_dict = {'Tom':100,'Bob':50}
 
+def find_winner(auction_dict):
+    winner = {'name':0}
+    for bidder in auction_dict:
+        if bidder[1] > winner[1]:
+            winner[0] = bidder[0]
+            winner[1] = bidder[1]
+    print(winner)
 
-def run_auction():
-    auction_dict = {}
-    flag = True
-    while flag = True
-    name = input("Name: ")
-    bid_price = input("Bid Price: ")
-    auction_dict["name"] = name
-    auction_dict["bid price"] = bid_price
-    choice = input("Is there another bidder?")
-    if choice == "No":
-        flag = False
-        find_winner()
-    elif choice  == "Yes":
-        clear()
+find_winner(auction_dict)
 
-run_auction()
+# def run_auction():
+    
+#     name = input("Name: ")
+#     bid_price = input("Bid Price: ")
+#     auction_dict["name"] = name
+#     auction_dict["bid price"] = bid_price
+#     choice = input("Is there another bidder?").lower()
+#     if choice == "no":
+#         print(f"the bidders are {auction_dict}")
+#         # print("Let's find a winner...")
+#         # find_winner()
+#         return auction_dict
+#     elif choice == "yes":
+    
+#         # clear()
+
+# run_auction()
