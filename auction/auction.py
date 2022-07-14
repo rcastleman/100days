@@ -18,8 +18,7 @@ def find_winner(bidding_record):
             highest_bid = bid_amount
             winner = bidder
     print(f"The winner is {winner} with a bid of {highest_bid}")
-       
-
+    
 bids = {}
 bidding_finished = False
 
