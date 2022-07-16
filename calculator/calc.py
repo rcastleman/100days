@@ -24,11 +24,12 @@ op_choice = ""
 for op in operations:
     op_choice += op + " "
 
-# num1 = int(input("What is the first number?: "))
-# num2 = int(input("What is the second number?: "))
+num1 = int(input("What is the first number?: "))
+num2 = int(input("What is the second number?: "))
 op = input(f"Which operation ({op_choice}?")
 
-# answer = operations["op_choice"]
-# print(f"{num1} {op_choice} {num2} = {answer} ")
+calculation_function = operations[op]
+answer = calculation_function(num1,num2)
 
-print(operations[op])
+# answer = operations["op_choice"]
+print(f"{num1} {op} {num2} = {answer} ")
