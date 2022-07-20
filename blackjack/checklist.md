@@ -1,10 +1,10 @@
-[ ] Deal both user and computer a starting hand of 2 random card values.
+[x] Deal both user and computer a starting hand of 2 random card values.
 
-[ ] Detect when computer or user has a blackjack. (Ace + 10 value card).
+[x] Detect when computer or user has a blackjack. (Ace + 10 value card).
 
-[ ] If computer gets blackjack, then the user loses (even if the user also has a blackjack). If the user gets a blackjack, then they win (unless the computer also has a blackjack).
+[x] If computer gets blackjack, then the user loses (even if the user also has a blackjack). If the user gets a blackjack, then they win (unless the computer also has a blackjack).
 
-[ ] Calculate the user's and computer's scores based on their card values.
+[x] Calculate the user's and computer's scores based on their card values.
 
 [ ] If an ace is drawn, count it as 11. But if the total goes over 21, count the ace as 1 instead.
 
