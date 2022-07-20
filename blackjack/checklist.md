@@ -6,13 +6,13 @@
 
 [x] Calculate the user's and computer's scores based on their card values.
 
-[ ] If an ace is drawn, count it as 11. But if the total goes over 21, count the ace as 1 instead.
+[x] If an ace is drawn, count it as 11. But if the total goes over 21, count the ace as 1 instead.
 
-[ ] Reveal computer's first card to the user.
+[x] Reveal computer's first card to the user.
 
-[ ] Game ends immediately when user score goes over 21 or if the user or computer gets a blackjack.
+[x] Game ends immediately when user score goes over 21 or if the user or computer gets a blackjack.
 
-[ ] Ask the user if they want to get another card.
+[x] Ask the user if they want to get another card.
 
 [ ] Once the user is done and no longer wants to draw any more cards, let the computer play. The computer should keep drawing cards unless their score goes over 16.
 

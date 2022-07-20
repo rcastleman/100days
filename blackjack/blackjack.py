@@ -14,44 +14,55 @@ start_query = input("Do you want to play Blackjack?  ").lower()
 if start_query == "n":
     exit()
 
+def play_again():
+    choice = input("Would you like to play again?:  ").lower()
+    if choice == "y":
+        clear()
+        user_hand()
+    else:
+        game_over = True
+
 game_over = False
 user_score = 0
 dealer_score = 0
 
 # while not game_over:
 
-user_first_card = random.choice(cards)
-user_score += user_first_card
-user_next_card = random.choice(cards)
-user_score += user_next_card
-if user_next_card == cards[0] and user_score > 21:
-    user_score = user_first_card + 1
+def user_hand():
+    user_first_card = random.choice(cards)
+    user_score += user_first_card
+    user_next_card = random.choice(cards)
+    user_score += user_next_card
+    if user_next_card == cards[0] and user_score > 21:
+        user_score = user_first_card + 1
+    return user_score,user_next_card
 
-dealer_first_card = random.choice(cards)
-dealer_score += dealer_first_card
-dealer_next_card = random.choice(cards)
-dealer_score += dealer_next_card
-if dealer_next_card == cards[0] and dealer_score > 21:
-    dealer_score = dealer_first_card + 1
+def dealer_hand():
+    dealer_first_card = random.choice(cards)
+    dealer_score += dealer_first_card
+    dealer_next_card = random.choice(cards)
+    dealer_score += dealer_next_card
+    if dealer_next_card == cards[0] and dealer_score > 21:
+        dealer_score = dealer_first_card + 1
+    return dealer_score, dealer_next_card
 
 if dealer_score == 21:
     print("Blackjack - dealer wins!")
     game_over = True
 
-if user_score == 21:
+elif user_score == 21:
     print("Blackjack - user wins!")
     game_over = True
 
-if user_score > 21:
+elif user_score > 21:
     print(f"Sorry, you're last card was {user_next_card} and your score hit {user_score}, so you busted")
     game_over = True
+    play_again()
+
 else:
     print(f"Your cards: [{user_first_card},{user_next_card}]. Current score: {user_score}")
     print(f"Computer's first card: {dealer_first_card}")
     user_choice = input("Type 'y' to get another card, type 'n' to pass: ")
     if user_choice == 'n':
-        game_over = True
-        clear()
-# else:
-    # deal_cards()
+        dealer_hand()
 
