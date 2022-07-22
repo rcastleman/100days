@@ -10,25 +10,6 @@ def clear():
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
-# start_query = input("Do you want to play Blackjack?  ").lower()
-
-# if start_query == "n":
-#     exit()
-
-# # def play_again():
-#     choice = input("Would you like to play again?:  ").lower()
-#     if choice == "y":
-#         clear()
-#         user_hand()
-#     else:
-#         game_over = True
-
-
-# user_score = 0
-# dealer_score = 0
-
-# while not game_over:
-
 #Angela's code
 
 def play_game():
@@ -104,6 +85,24 @@ while input("Do you want to play a game of Blackjack? Type 'y' or 'n'") == "y":
     clear()
     play_game()
 
+# start_query = input("Do you want to play Blackjack?  ").lower()
+
+# if start_query == "n":
+#     exit()
+
+# # def play_again():
+#     choice = input("Would you like to play again?:  ").lower()
+#     if choice == "y":
+#         clear()
+#         user_hand()
+#     else:
+#         game_over = True
+
+
+# user_score = 0
+# dealer_score = 0
+
+# while not game_over:
 # def user_hand():
 #     user_first_card = random.choice(cards)
 #     user_score += user_first_card
