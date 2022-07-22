@@ -40,6 +40,22 @@ def calculate_score(cards):
         cards.append(1)
     return sum(cards)
 
+def compare(user_score,dealer_score):
+    if user_score == dealer_score:
+        return "Draw"
+    elif dealer_score == 0:
+        return "Game Over! Dealer has Blackjack"
+    elif user_score == 0:
+        return "Game Over! Player has Blackjack"
+    elif user_score > 21:
+        return "Game Over! Player went over 21"
+    elif dealer_score > 21:
+        return "Game Over1 Dealer went over 21"
+    elif user_score > dealer_score:
+        return "Player wins"
+    else:
+        return "Player loses"
+
 def deal_card():
     """Returns a random card from the deck"""
     card = random.choice(cards)
@@ -52,6 +68,7 @@ for _ in range(2):
     user_cards.append(deal_card())
     dealer_cards.append(deal_card())
 
+#user while loop
 while game_over == False:
 
     user_score = calculate_score(user_cards)
@@ -62,15 +79,21 @@ while game_over == False:
 
     if user_score == 0 or user_score > 21 or dealer_score == 0:
         game_over = True
-        print(f"Game Over! User Score = {user_score} and Dealer Score = {dealer_score}")
+        # print(f"Game Over! User Score = {user_score} and Dealer Score = {dealer_score}")
     else: 
         user_choice = input("Type 'y' to get another card or 'n' to pass:  ")
         if user_choice == 'y':
             user_cards.append(deal_card())
         else:
             game_over = True
-            print(f"Game Over! User Score = {user_score} and Dealer Score = {dealer_score}")
+            # print(f"Game Over! User Score = {user_score}, Dealer Cards = {dealer_cards} and Dealer Score = {dealer_score}")
 
+#dealer while loop
+while dealer_score !=0 and dealer_score < 17:
+    dealer_cards.append(deal_card())
+    dealer_score = calculate_score(dealer_cards)
+
+compare(user_score,dealer_score)
 
 
 # def user_hand():
