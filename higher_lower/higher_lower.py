@@ -1,9 +1,4 @@
 import random
-from socket import if_nametoindex
-from time import sleep
-from unicodedata import name
-
-from pytz import country_names
 from art import logo,vs
 from game_data import data
 
