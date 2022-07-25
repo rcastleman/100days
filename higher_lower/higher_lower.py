@@ -1,11 +1,12 @@
 import random
+from secrets import choice
 from art import logo,vs
 from game_data import data
 
 #initialize score
 score = 0
 
-#select random record
+#function for picking a random record
 def select_record(data):
     """chooses random record from data"""
     index = random.randint(0,len(data))
@@ -15,13 +16,11 @@ def select_record(data):
     followers = data[index]['follower_count']
     return name,description,country,followers
 
-# a = select_record(data)
-# print(a[0],a[1],a[2])
-
+#generate initial two choices
 choice_A = select_record(data)
 choice_B = select_record(data)
 
-# present_choices and collect answer
+# present choices and collect answer
 def present_choices():
     """prints logo and two random choices from game_data, takes in user answer"""
     print(logo)
@@ -34,10 +33,19 @@ def present_choices():
 #judge_answer function
 def judge_answer(answer,choice_A,choice_B):
     """determines higher follow count and if answer is correct"""    
-    higher = max(choice_A[3],choice_B[3])
-    print(higher)
-    print(f"and the user's answer was: {answer}")
-    return answer 
+    if choice_A[3] > choice_B[3]:
+        higher = 'a'
+        # print(f"{choice_A[0]} had more, with {choice_A[3]} follows")
+    else: 
+        higher = 'b'
+        # print(f"{choice_B[0]} had more, with {choice_B[3]} follows")
+    if answer == higher:
+        score += 1
+        print(f"You're right! Current score: {score}.  ")
+        # swap HIGHER for new A
+    else:
+        print(f"Sorry, that's wrong.  Final score = {score}. ")
+    return higher
 
-# present_choices()
-judge_answer(present_choices(),choice_A,choice_B)
+print(present_choices())
+# judge_answer(present_choices(),choice_A,choice_B)
