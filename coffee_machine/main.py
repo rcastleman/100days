@@ -32,10 +32,8 @@ money_dict = {
 # for i in resource_requirements:
 #     print(f"The water requirement for {i} is {resource_requirements[i]['water']}")
 
-difference = 0
 
 def cashier(money_dict,choice):
-    global difference
     print("Please insert coins.")
     quarters = float(input("How many quarters?:  "))
     dimes = float(input("How many dimes?:  "))
