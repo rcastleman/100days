@@ -32,7 +32,10 @@ money_dict = {
 # for i in resource_requirements:
 #     print(f"The water requirement for {i} is {resource_requirements[i]['water']}")
 
+difference = 0
+
 def cashier(money_dict,choice):
+    global difference
     print("Please insert coins.")
     quarters = float(input("How many quarters?:  "))
     dimes = float(input("How many dimes?:  "))
@@ -47,14 +50,18 @@ def cashier(money_dict,choice):
     print(f"The price for your {choice} is {f_price}")
     if price > paid:
         difference = price - paid
-        print(f"Sorry, you haven't paid enough. Please put in {difference} more")
+        f_diff ="${:.2f}".format(difference)
+        print(f"Sorry, you haven't paid enough. You're short  {f_diff}")
     else:
-        print(f"Thank you.  Your change is: {difference} ")
+        difference = paid - price
+        f_diff ="${:.2f}".format(difference)
+        print(f"Thank you. Your change is: {f_diff} ")
+    
 
     #issue change
 
 
-cashier(money_dict,"latte")
+cashier(money_dict,"espresso")
 
 
 #When the user enters “report” to the prompt, a report should be generated that shows
