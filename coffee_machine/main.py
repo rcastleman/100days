@@ -45,9 +45,10 @@ def cashier(money_dict,choice):
     paid = money_dict["quarters"]*quarters + money_dict["dimes"]*dimes + money_dict["nickels"]*nickels + money_dict["pennies"]*pennies
     f_paid = "${:.2f}".format(paid) #formatted total
     print(f"You paid: {f_paid}")
-    resources["money"] += paid
     #determine if amount paid is sufficient
     price = price_list[choice]
+    #add price (not amount paid) to Resources[money]
+    resources["money"] += price
     f_price = "${:.2f}".format(price)
     print(f"The price for your {choice} is {f_price}")
     if price > paid:
@@ -111,4 +112,4 @@ while not off:
 
     barrista()
 
-# TODO add ONLY the price of the drink to money, not the amount paid
+# COMPLETE add ONLY the price of the drink to money, not the amount paid
