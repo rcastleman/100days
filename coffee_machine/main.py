@@ -1,6 +1,10 @@
 import resource
-from sys import last_type
 from menu import MENU
+
+#global variables
+off = False
+sufficient_resources = True
+enough_money = False
 
 resources = {
     "water": 300,
@@ -11,7 +15,7 @@ resources = {
 price_list = {
     "espresso": 1.5,
     "latte": 2.50,
-    "cappucino": 3.50}
+    "cappuccino": 3.50}
 
 resource_requirements = {
     "espresso": {"water":50,
@@ -20,7 +24,7 @@ resource_requirements = {
     "latte":{"water":200,
     "coffee":24,
     "milk":150 },
-    "cappucino": {"water":250,
+    "cappuccino": {"water":250,
     "coffee":24,
     "milk":100}}
 
@@ -30,13 +34,7 @@ money_dict = {
     "nickels": 0.05,
     "pennies":0.01}
 
-# for i in resource_requirements:
-#     print(f"The water requirement for {i} is {resource_requirements[i]['water']}")
-
-sufficient_resources = True
-
 def cashier(money_dict,choice):
-    global sufficient_resources
     print("Please insert coins.")
     quarters = float(input("How many quarters?:  "))
     dimes = float(input("How many dimes?:  "))
@@ -45,9 +43,8 @@ def cashier(money_dict,choice):
     paid = money_dict["quarters"]*quarters + money_dict["dimes"]*dimes + money_dict["nickels"]*nickels + money_dict["pennies"]*pennies
     f_paid = "${:.2f}".format(paid) #formatted total
     print(f"You paid: {f_paid}")
-    resources["money"] = paid
+    resources["money"] += paid
 
-    #check sufficiency against price
     price = price_list[choice]
     f_price = "${:.2f}".format(price)
     print(f"The price for your {choice} is {f_price}")
@@ -55,12 +52,10 @@ def cashier(money_dict,choice):
         difference = price - paid
         f_diff ="${:.2f}".format(difference)
         print(f"Sorry, you haven't paid enough. You're short  {f_diff}")
-        sufficient_resources = False
     else:
         difference = paid - price
         f_diff ="${:.2f}".format(difference)
         print(f"Thank you. Your change is: {f_diff} ")
-        sufficient_resources = True
 
 def format_report(resources):
     water = resources['water']
@@ -69,36 +64,45 @@ def format_report(resources):
     money = "${:.2f}".format(resources['money'])
     return f"Water: {water} ml \nMilk: {milk} ml \nCoffee: {coffee} g \nMoney: {money}"
 
-
-
-#ACTIVE LOOP
-
-# off = False
-
-# while not off:
-
-    # def machine_on():
-        # pass
-
-# TODO Check resources sufficient?
-# TODO If sufficient resources, process coins
-# TODO transaction successful? Give change Give coffee
-# TODO “Here is your {coffee choice}. Enjoy!”.
-
-# Prompt user by asking “ What would you like? (espresso/latte/cappuccino): ”
-def barrista():
+def check_resources(resources,resource_requirements,choice):
     global sufficient_resources
-    print(f"Sufficient resources state: {sufficient_resources}")
-    choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
-    if choice == 'off':
-        off = True
-    elif choice == 'report':
-        print(format_report(resources))
-    elif choice in MENU.keys(): #and sufficient_resources == True:
-        print(f"One {choice} coming right up ... ")
-    else: 
-        print("Sorry, that's not on the menu.  Please choose an espresso, latte, or cappuccino.")
-    #CHECK IF RESOURCES ADEQUATE
-    return choice
+    if resource_requirements[choice]["water"] > resources["water"]:
+        sufficient_resources = False
+        print(f"Sorry, there's not enough water for a {choice}")
+    elif resource_requirements[choice]["milk"] > resources["milk"]:
+        sufficient_resources = False
+        print(f"Sorry, there's not enough milk for a {choice}")
+    elif resource_requirements[choice]["coffee"] > resources["coffee"]:
+        sufficient_resources = False
+        print(f"Sorry, there's not enough coffee for a {choice}")
+    else:
+        sufficient_resources = True
 
-barrista()
+# check_resources(resources,resource_requirements,"cappuccino")
+
+choice = 'latte'
+print(resource_requirements[choice]["water"], "vs", resources["water"])
+print(resource_requirements[choice]["milk"] > resources["milk"])
+print(resource_requirements[choice]["coffee"] > resources["coffee"])
+
+while not off:
+
+    def barrista():
+        global sufficient_resources, enough_money, off
+        choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
+        if choice == 'off':
+            print("Okay, shutting down ... ")
+            off = True
+        elif choice == 'report':
+            print(format_report(resources))
+        elif choice in MENU.keys():
+            if sufficient_resources == True:
+                cashier(money_dict,choice)
+        else: 
+            print("Sorry, that's not on the menu.  Please choose an espresso, latte, or cappuccino.")
+        return choice
+
+    # barrista()
+
+#TODO decrement resources
+#TODO increment / decrement
