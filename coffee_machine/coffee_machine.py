@@ -43,7 +43,14 @@ def cashier(money_dict,choice):
     print(f"You paid: {f_paid}")
     #check sufficiency against price
     price = price_list[choice]
-    print(f"The price for your {choice} is {price}")
+    f_price = "${:.2f}".format(price)
+    print(f"The price for your {choice} is {f_price}")
+    if price > paid:
+        difference = price - paid
+        print(f"Sorry, you haven't paid enough. Please put in {difference} more")
+    else:
+        print(f"Thank you.  Your change is: {difference} ")
+
     #issue change
 
 
