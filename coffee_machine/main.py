@@ -110,3 +110,5 @@ while not off:
         return choice
 
     barrista()
+
+# TODO add ONLY the price of the drink to money, not the amount paid
