@@ -1,4 +1,5 @@
 import resource
+from sys import last_type
 from menu import MENU
 
 resources = {
@@ -32,8 +33,10 @@ money_dict = {
 # for i in resource_requirements:
 #     print(f"The water requirement for {i} is {resource_requirements[i]['water']}")
 
+sufficient_resources = True
 
 def cashier(money_dict,choice):
+    global sufficient_resources
     print("Please insert coins.")
     quarters = float(input("How many quarters?:  "))
     dimes = float(input("How many dimes?:  "))
@@ -42,6 +45,8 @@ def cashier(money_dict,choice):
     paid = money_dict["quarters"]*quarters + money_dict["dimes"]*dimes + money_dict["nickels"]*nickels + money_dict["pennies"]*pennies
     f_paid = "${:.2f}".format(paid) #formatted total
     print(f"You paid: {f_paid}")
+    resources["money"] = paid
+
     #check sufficiency against price
     price = price_list[choice]
     f_price = "${:.2f}".format(price)
@@ -50,20 +55,12 @@ def cashier(money_dict,choice):
         difference = price - paid
         f_diff ="${:.2f}".format(difference)
         print(f"Sorry, you haven't paid enough. You're short  {f_diff}")
+        sufficient_resources = False
     else:
         difference = paid - price
         f_diff ="${:.2f}".format(difference)
         print(f"Thank you. Your change is: {f_diff} ")
-    
-
-    #issue change
-
-
-cashier(money_dict,"espresso")
-
-
-#When the user enters “report” to the prompt, a report should be generated that shows
-# the current resource values
+        sufficient_resources = True
 
 def format_report(resources):
     water = resources['water']
@@ -72,28 +69,16 @@ def format_report(resources):
     money = "${:.2f}".format(resources['money'])
     return f"Water: {water} ml \nMilk: {milk} ml \nCoffee: {coffee} g \nMoney: {money}"
 
-def sufficient_resources(choice,resources):
-    pass
-
-def process_coins(choice,price_list):
-    pass
-
-
-# print(format_report(resources))
-
-# COMPLETE Turn off the Coffee Machine by entering “ off ” to the prompt.
-"""For maintainers of the coffee machine, they can use 'off' as the secret word to turn off
-the machine. Your code should end execution when this happens."""
 
 
 #ACTIVE LOOP
 
-off = False
+# off = False
 
-while not off:
+# while not off:
 
-    def machine_on():
-        pass
+    # def machine_on():
+        # pass
 
 # TODO Check resources sufficient?
 # TODO If sufficient resources, process coins
@@ -101,17 +86,19 @@ while not off:
 # TODO “Here is your {coffee choice}. Enjoy!”.
 
 # Prompt user by asking “ What would you like? (espresso/latte/cappuccino): ”
-    def get_choice():
-        choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
-        if choice == 'off':
-            off = True
-        elif choice == 'report':
-            format_report(resources)
-        elif choice in MENU.keys() and sufficient_resources == True:
-            print(f"One {choice} coming right up ... ")
-        else: 
-            print("Sorry, that's not on the menu.  Please choose an espresso, latte, or cappuccino.")
-        #CHECK IF RESOURCES ADEQUATE
-        return choice
+def barrista():
+    global sufficient_resources
+    print(f"Sufficient resources state: {sufficient_resources}")
+    choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
+    if choice == 'off':
+        off = True
+    elif choice == 'report':
+        print(format_report(resources))
+    elif choice in MENU.keys(): #and sufficient_resources == True:
+        print(f"One {choice} coming right up ... ")
+    else: 
+        print("Sorry, that's not on the menu.  Please choose an espresso, latte, or cappuccino.")
+    #CHECK IF RESOURCES ADEQUATE
+    return choice
 
-get_choice()
+barrista()
