@@ -18,7 +18,6 @@ while machine_on:
             elif choice == 'report':
                 machine.report()
                 cashier.report()
-            #is choice in Menu? 
             else:
                 drink = menu.find_drink(choice)
                 if (machine.is_resource_sufficient(drink)) and cashier.make_payment(drink.cost):
