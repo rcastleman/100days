@@ -8,7 +8,6 @@ menu = Menu()
 
 machine_on = True
 while machine_on:
-
     def barrista():
             global machine_on
             options = menu.get_items()
@@ -24,5 +23,4 @@ while machine_on:
                 drink = menu.find_drink(choice)
                 if (machine.is_resource_sufficient(drink)) and cashier.make_payment(drink.cost):
                         machine.make_coffee(drink)
-
     barrista()
