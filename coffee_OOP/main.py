@@ -7,28 +7,22 @@ cashier = MoneyMachine()
 menu = Menu()
 
 machine_on = True
-
 while machine_on:
 
     def barrista():
             global machine_on
-            #ask user choice
-            choice = input("\r\nWelcome to the Coffee Bar \r\nWhat would you like? (espresso/latte/cappuccino): ").lower()
-            #shut down if 'off' 
+            options = menu.get_items()
+            choice = input(f"\r\nWelcome to the Coffee Bar \r\nWhat would you like? ({options}): ").lower()
             if choice == 'off':
                 print("Okay, shutting down ... ")
                 machine_on = False
-            #generate report if 'report'
             elif choice == 'report':
-                CoffeeMaker.report(machine)
+                machine.report()
+                cashier.report()
             #is choice in Menu? 
-            elif menu.find_drink(choice) and machine.is_resource_sufficient(choice):
-                #create MenuItem object??
-                # order = MenuItem(ARGS????)
-                #ask for money
-                # cashier.process_coins()
-                # cashier.make_payment(MenuItem)
-                # machine.make_coffee(choice)
-                return choice
+            else:
+                drink = menu.find_drink(choice)
+                if (machine.is_resource_sufficient(drink)) and cashier.make_payment(drink.cost):
+                        machine.make_coffee(drink)
 
     barrista()
