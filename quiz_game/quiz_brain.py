@@ -1,9 +1,5 @@
 from data import question_data
 
-#TODO ask question
-#TODO check if answer correct
-#TODO check if end of quiz
-
 class QuizBrain:
 
     def __init__(self,q_list):
@@ -28,3 +24,4 @@ class QuizBrain:
             print("That's wrong.")
         print(f"The correct answer was: {correct_answer}")
         print(f"Your current score is: {self.score} / {self.question_number}")
+        print("\n")
