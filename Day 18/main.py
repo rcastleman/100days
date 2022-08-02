@@ -14,8 +14,9 @@ def draw_shape(sides,angle):
         timmy.right(angle)
 
 for sides in range(3,11):
-    angle = 360 / sides
     timmy.color(random.choice(colors))
+    timmy.width(10)
+    angle = 360 / sides
     draw_shape(sides,angle)
 
 # for _ in range(10):
