@@ -17,10 +17,9 @@ def set_start_position():
 
 def draw_row():
     """draw ten dots horizontally using a random color for each"""
-    for width in range(9):
+    for _ in range(9):
         a.showturtle()
         a.color("white",random.choice(color_list))
-        # a.fillcolor(random.choice(color_list))
         a.stamp()
         a.forward(50)
 
@@ -39,12 +38,13 @@ def move_up_right():
     a.right(90)
 
 def sequence():
+    """draw a 10 x 10 array of Hirst dots with random colors"""
     set_start_position()
     for i in range(9):
         draw_row()
         if i % 2 == 0:
             move_up_left()
-        else:
+        if i % 2 == 1:
             move_up_right()
         draw_row()
 
