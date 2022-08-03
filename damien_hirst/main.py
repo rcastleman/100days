@@ -8,6 +8,7 @@ color_list = [(202, 164, 110), (236, 239, 243), (149, 75, 50), (222, 201, 136), 
 a = turtle.Turtle()
 a.shape("circle")
 a.color("white",random.choice(color_list))
+a.speed("fastest")
 
 def set_start_position():
     """create turtle and put in position"""
@@ -40,13 +41,13 @@ def move_up_right():
 def sequence():
     """draw a 10 x 10 array of Hirst dots with random colors"""
     set_start_position()
-    for i in range(9):
+    for i in range(10):
         draw_row()
         if i % 2 == 0:
             move_up_left()
-        if i % 2 == 1:
+        else:
             move_up_right()
-        draw_row()
+    a.hideturtle()
 
 sequence()
 
