@@ -1,33 +1,28 @@
 from turtle import Turtle,Screen
 
-tim = Turtle()
+from numpy import spacing
+
 screen = Screen()
+screen.setup(width=500,height=400)
+# user_bet = screen.textinput(title="Make your bet",prompt="Which turtle? enter a color: ")
+colors = ["red","orange","yellow","green","blue","purple"]
 
-def move_forward():
-    tim.forward(10)
+def create_turtles():
+    x = -230
+    y = -100
+    spacing = 40
+    for color in colors:
+        racer = Turtle(shape="turtle")
+        racer.color(color)
+        racer.penup()
+        racer.setpos(x,y)
+        y += spacing
 
-def move_back():
-    tim.back(10)
+create_turtles()
 
-def move_right():
-    new_heading = tim.heading() + 10
-    tim.setheading(new_heading)
+# tim = Turtle(shape="turtle")
+# tim.penup()
+# tim.goto(x=-230,y =-100)
 
-def move_left():
-    new_heading = tim.heading() - 10
-    tim.setheading(new_heading)
-
-def clear():
-    tim.clear()
-    tim.penup()
-    tim.home()
-    tim.pendown()
-
-screen.listen()
-screen.onkey(key = "w",fun=move_forward)
-screen.onkey(key = "s",fun=move_back)
-screen.onkey(key = "d",fun=move_right)
-screen.onkey(key = "a",fun=move_left)
-screen.onkey(key = "c",fun=clear)
 
 screen.exitonclick()
