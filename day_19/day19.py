@@ -3,11 +3,11 @@ import random
 
 screen = Screen()
 screen.setup(width=500,height=400)
-# user_bet = screen.textinput(title="Make your bet",prompt="Which turtle? enter a color: ")
+# speed("fastest")
+user_bet = screen.textinput(title="Make your bet",prompt="Which turtle? enter a color: ")
 colors = ["red","orange","yellow","green","blue","purple"]
 
 racers = []
-
 
 def create_turtles():
     x = -230
@@ -15,25 +15,27 @@ def create_turtles():
     spacing = 40
     for color in colors:
         racer = Turtle(shape="turtle")
+        racer.speed(0)
         racer.color(color)
         racer.penup()
         racer.setpos(x,y)
         racers.append(racer)
         y += spacing
 
-def advance(racer):
-    amount = random.randint(0,25)
-    racer.forward(amount)
-
-
-race_not_over = True
-while race_not_over:
-    for racer in racers:
-        advance(racer)
-        if racer.xcor == 250:
-            print(f"Race over!  {racer} is the winner")
-            race_not_over = False
 
 create_turtles()
+
+if user_bet:
+    race_over = False
+    while race_over == False:
+        for racer in racers:
+            racer.forward(random.randint(0,10))
+            if racer.xcor() >= 100:
+                race_over = True
+                print(f"Race over!  {racer.color()} is the winner")
+                if user_bet == racer.color:
+                    print("You won!")
+                else:
+                    print("Sorry, you lost")
 
 screen.exitonclick()
