@@ -5,7 +5,7 @@ import random
 # if the snake hits it, it moves to a new random coordinate
 
 class Food(Turtle):
-    
+
     def __init__(self):
         super().__init__()
         self.shape("circle")
@@ -16,3 +16,9 @@ class Food(Turtle):
         rand_x = random.randint(-280,280)
         rand_y = random.randint(-280,280)
         self.goto(rand_x,rand_y)
+    
+    def refresh(self):
+        rand_x = random.randint(-280,280)
+        rand_y = random.randint(-280,280)
+        self.goto(rand_x,rand_y)
+

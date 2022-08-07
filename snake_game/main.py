@@ -27,6 +27,8 @@ while game_is_on:
     # detect_collision with food
     if snake.head.distance(food) < 15:
         print("yum yum yum ")
+        food.refresh()
+        
 
 
 screen.exitonclick()
