@@ -27,7 +27,14 @@ game_is_on = True
 while game_is_on:
     screen.update()
     time.sleep(0.1)
-    for seg in segments:
-        seg.forward(20)
+    #loop through all segments (no matter how many) starting from the LAST ... each segment goes 
+    #to the position of the segment before it (ie last, next-to-last, etc.) thus "following" the 
+    #first segment, no matter where it goes
+    for segnum in range(len(segments)-1,0,-1): 
+        new_x = segments[segnum - 1].xcor()
+        new_y = segments[segnum - 1].ycor()
+        segments[segnum].goto(new_x,new_y)
+    segments[0].forward(20)
+    segments[0].left(90)
 
 screen.exitonclick()
