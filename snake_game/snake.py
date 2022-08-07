@@ -22,6 +22,23 @@ class Snake:
             self.segment_i.setpos(self.x,self.y)
             self.segments.append(self.segment_i)
             self.x -= self.spacing
+    
+    def up(self):
+        self.segments[0].setheading(90)
+        self.segments[0].forward(MOVE_DISTANCE)
+
+    def down(self):
+        self.segments[0].setheading(270)
+        self.segments[0].forward(MOVE_DISTANCE)
+
+    def left(self):
+        self.segments[0].setheading(180)
+        self.segments[0].forward(MOVE_DISTANCE)
+
+    def right(self):
+        self.segments[0].setheading(0)
+        self.segments[0].forward(MOVE_DISTANCE)
+
 
     def move(self):
             """loops through any number of segments from the LAST segment to the first, moving each to the position of the segment in front of it, thus *following* the first segment"""
@@ -29,5 +46,4 @@ class Snake:
                 new_x = self.segments[segnum - 1].xcor()
                 new_y = self.segments[segnum - 1].ycor()
                 self.segments[segnum].goto(new_x,new_y)
-            self.segments[0].forward(MOVE_DISTANCE)
-            # self.segments[0].left(90)
+            # self.segments[0].forward(MOVE_DISTANCE)
