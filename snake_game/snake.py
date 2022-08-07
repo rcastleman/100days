@@ -1,15 +1,20 @@
+from pickletools import UP_TO_NEWLINE
 from turtle import Screen,Turtle
 import time
 
-MOVE_DISTANCE = 20
+MOVE_DISTANCE = 10
 INITIAL_NUM_SEGMENTS = 3
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 class Snake:
 
     def __init__(self):
         self.segments = []
         self.create_snake()
-        # self.num_segments = num_segments
+        self.head = self.segments[0]
 
     def create_snake(self):
         self.x = 0
@@ -24,21 +29,24 @@ class Snake:
             self.x -= self.spacing
     
     def up(self):
-        self.segments[0].setheading(90)
-        self.segments[0].forward(MOVE_DISTANCE)
+        if self.head.heading() != DOWN:
+            self.head.setheading(UP)
+            self.head.forward(MOVE_DISTANCE)
 
     def down(self):
-        self.segments[0].setheading(270)
-        self.segments[0].forward(MOVE_DISTANCE)
+        if self.head.heading() != UP:
+            self.head.setheading(DOWN)
+            self.head.forward(MOVE_DISTANCE)
 
     def left(self):
-        self.segments[0].setheading(180)
-        self.segments[0].forward(MOVE_DISTANCE)
+        if self.head.heading() != RIGHT:
+            self.head.setheading(LEFT)
+            self.head.forward(MOVE_DISTANCE)
 
     def right(self):
-        self.segments[0].setheading(0)
-        self.segments[0].forward(MOVE_DISTANCE)
-
+        if self.head.heading() != LEFT:
+            self.head.setheading(RIGHT)
+            self.head.forward(MOVE_DISTANCE)
 
     def move(self):
             """loops through any number of segments from the LAST segment to the first, moving each to the position of the segment in front of it, thus *following* the first segment"""
@@ -46,4 +54,4 @@ class Snake:
                 new_x = self.segments[segnum - 1].xcor()
                 new_y = self.segments[segnum - 1].ycor()
                 self.segments[segnum].goto(new_x,new_y)
-            # self.segments[0].forward(MOVE_DISTANCE)
+            self.head.forward(MOVE_DISTANCE)
