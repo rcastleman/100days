@@ -1,5 +1,5 @@
 from turtle import Screen,Turtle
-import snake
+from snake import Snake
 import time
 
 screen = Screen()
@@ -8,7 +8,7 @@ screen.bgcolor("black")
 screen.title("My Snake Game")
 screen.tracer(0)
 
-create_snake()
+snake.create_snake()
 
 game_is_on = True
 while game_is_on:
