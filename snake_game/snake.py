@@ -17,6 +17,8 @@ class Snake:
         self.head = self.segments[0]
 
     def create_snake(self):
+        # self.add_segment()
+    # def add_segment(self):
         self.x = 0
         self.y = 0
         self.spacing = 20
@@ -28,6 +30,14 @@ class Snake:
             self.segments.append(self.segment_i)
             self.x -= self.spacing
     
+    def extend(self):
+        target_position = self.segments[-1].position()
+        new_segment = Turtle("square")
+        new_segment.color("white")
+        new_segment.penup()
+        new_segment.setpos(target_position)
+        self.segments.append(new_segment)
+
     def up(self):
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
