@@ -1,9 +1,6 @@
 from turtle import Turtle
 import random
 
-# needs to go to a random coordinate
-# if the snake hits it, it moves to a new random coordinate
-
 class Food(Turtle):
 
     def __init__(self):
