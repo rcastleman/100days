@@ -1,4 +1,4 @@
-from turtle import Turtle,Screen
+from turtle import Turtle
 import random
 
 # needs to go to a random coordinate
@@ -21,4 +21,3 @@ class Food(Turtle):
         rand_x = random.randint(-280,280)
         rand_y = random.randint(-280,280)
         self.goto(rand_x,rand_y)
-
