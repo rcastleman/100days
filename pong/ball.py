@@ -1,5 +1,6 @@
 from turtle import Turtle
-import turtle
+
+MOVE_DISTANCE = 1
 
 class Ball(Turtle):
 
@@ -7,5 +8,9 @@ class Ball(Turtle):
         super().__init__()
         self.shape("circle")
         self.color("purple")
-
-
+        self.penup()
+    
+    def move(self):
+        new_x = self.xcor() + MOVE_DISTANCE
+        new_y = self.ycor() + MOVE_DISTANCE
+        self.goto(new_x,new_y)
