@@ -11,6 +11,7 @@ screen.tracer(0)
 
 r_paddle = Paddle((350,0))
 l_paddle = Paddle((-350,0))
+# new_paddle = Paddle((0,0))
 
 screen.listen()
 screen.onkey(r_paddle.go_up,"Up")
