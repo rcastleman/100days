@@ -1,6 +1,6 @@
 from turtle import Screen
 from paddle import Paddle
-
+from ball import Ball
 # MOVE_DISTANCE = 20
 
 screen = Screen()
@@ -11,7 +11,8 @@ screen.tracer(0)
 
 r_paddle = Paddle((350,0))
 l_paddle = Paddle((-350,0))
-# new_paddle = Paddle((0,0))
+
+ball = Ball()
 
 screen.listen()
 screen.onkey(r_paddle.go_up,"Up")
