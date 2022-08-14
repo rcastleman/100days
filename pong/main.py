@@ -38,10 +38,12 @@ while game_is_on:
     #detect right paddle miss
     if ball.xcor() > 380:
         ball.reset_position()
+        scoreboard.l_point()
         ball.move_left()
     #detect left paddle miss
     if ball.xcor() < -380:
         ball.reset_position()
+        scoreboard.r_point()
         ball.move_right()
 
 screen.exitonclick()
