@@ -1,3 +1,4 @@
+from cgitb import reset
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
@@ -24,10 +25,21 @@ screen.onkey(l_paddle.go_down,"s")
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
-    ball.move()
+    ball.move_right()
     screen.update()
-    #detect collision
-    if ball.ycor() > 280 or ball.ycor() < -280:
-        ball.bounce()
+    #detect collision with wall
+    if ball.ycor() > 275 or ball.ycor() < -275:
+        ball.bounce_y()
+    #detect collision with paddles
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 320 or ball.distance(l_paddle) < 50 and ball.xcor() < -320:
+        ball.bounce_x()
+    #detect right paddle miss
+    if ball.xcor() > 380:
+        ball.reset_position()
+        ball.move_left()
+    #detect left paddle miss
+    if ball.xcor() < -380:
+        ball.reset_position()
+        ball.move_right()
 
 screen.exitonclick()
