@@ -1,6 +1,6 @@
 from turtle import Turtle
 
-MOVE_DISTANCE = 1
+MOVE_DISTANCE = 10
 
 class Ball(Turtle):
 
