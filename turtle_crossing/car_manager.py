@@ -1,8 +1,6 @@
 from turtle import Turtle
 import random
 
-from .player import FINISH_LINE_Y
-
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
@@ -27,9 +25,3 @@ class CarManager():
     def move_cars(self):
         for car in self.all_cars:
             car.forward(STARTING_MOVE_DISTANCE)
-        
-    def is_at_finish_line(self):
-        if self.ycor() > FINISH_LINE_Y:
-            return True
-        else: 
-            return False
