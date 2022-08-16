@@ -28,8 +28,5 @@ screen.onkey(player.go_down,"Down")
 
 game_is_on = True
 while game_is_on:
-    counter = 0
     time.sleep(0.1)
     screen.update()
-    if counter % 6 ==0:
-        #RUN CAR CREATION METHOD
