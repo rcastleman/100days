@@ -14,8 +14,8 @@
 
 
 #APPEND to the file:
-# with open("my_file.txt",mode = 'a') as file:
-#     file.write("\n some new text here ... ")
+with open("../../../my_file.txt",mode = 'a') as file:
+    file.write("\n I AGAIN found the file in its new place ... ")
 
-with open("my_new_file.txt",mode = 'w') as file:
-    file.write("some new tezt in a new file")
+# with open("my_new_file.txt",mode = 'w') as file:
+#     file.write("some new tezt in a new file")
