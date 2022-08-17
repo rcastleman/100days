@@ -16,6 +16,7 @@ class Snake:
         self.create_snake()
         self.head = self.segments[0]
 
+
     def create_snake(self):
         # self.add_segment()
     # def add_segment(self):
@@ -57,6 +58,13 @@ class Snake:
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
             self.head.forward(MOVE_DISTANCE)
+    
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000,1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
 
     def move(self):
             """loops through any number of segments from the LAST segment to the first, moving each to the position of the segment in front of it, thus *following* the first segment"""
