@@ -17,19 +17,10 @@ with open("Input/Names/invited_names.txt") as file:
         names.append(name)
 
 for name in names: 
-    with open("Input/Letters/starting_letter.txt") as template:
-        text = template.readlines()
-        for word in text:
-            word.replace('[name]',name)
-
+    with open("Input/Letters/starting_letter.txt") as text:
+        text = text.readlines()
+        text  = " ".join(text)
+        # print(new)
     with open(f"Output/ReadyToSend/{name}_letter.txt",mode = "w") as new_letter:
-        new_letter.write(str(text))
-        
-#TODO for Name in Invited Names
-
-    #TODO create new letter 
-        # using Open 
-        # *in* the Output/ReadyToSend folder 
-        # *and* give it proper filename
-
-    #TODO replace [name] with Name
+        new_letter.write(text)
+    
