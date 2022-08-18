@@ -20,7 +20,8 @@ for name in names:
     with open("Input/Letters/starting_letter.txt") as text:
         text = text.readlines()
         text  = " ".join(text)
-        # print(new)
+        text = text.replace("[name]",name)
+
     with open(f"Output/ReadyToSend/{name}_letter.txt",mode = "w") as new_letter:
         new_letter.write(text)
     
