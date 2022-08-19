@@ -73,4 +73,5 @@ q_dict = {
     "Count" : [gray,red,black]
 }
 result = pd.DataFrame(q_dict)
-print(result)
+result.to_csv("squirrel_count.csv")
+# print(result)
