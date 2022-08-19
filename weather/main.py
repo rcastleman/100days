@@ -1,4 +1,6 @@
 import csv
+import pandas as pd
+from dataclasses import dataclass
 
 # with open("weather_data.csv") as file:
 #     raw_data = file.readlines()
@@ -9,8 +11,12 @@ import csv
 # print(clean_data[1:])
 
 
-with open("weather_data.csv") as data_file:
-    #creates a CSV data object
-    data = csv.reader(data_file)
+with open ("weather_data.csv") as data_file:
+    data = csv.reader(data_file)  
+# print(data)
+#create list of temperatures where values are integers
+    temperatures = []
     for row in data:
-        print(row)
+        if row[1] != "temp":
+            temperatures.append(int(row[1]))
+    print(temperatures)
