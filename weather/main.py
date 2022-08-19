@@ -22,4 +22,38 @@ with open ("weather_data.csv") as data_file:
     # print(temperatures)
 
 data = pd.read_csv("weather_data.csv")
-print(data['temp'])
+# print(data)
+
+data_dict = data.to_dict()
+# print(data_dict)
+
+temp_list = data["temp"].to_list()
+# print(temp_list)
+# average = sum(temp_list)/len(temp_list)
+# print(average)
+# max = data["temp"].max()
+
+# print(data.day)
+
+def convert_CtoF(temp):
+    return temp * 9/5 + 32
+
+monday = data[data.day == "Monday"]
+monday_temp = monday.temp
+print(convert_CtoF(monday_temp))
+
+# print(convert_CtoF(data.temp == monday))
+
+# print(monday.condition)
+
+# print(data[data.temp == max])
+
+# create a dataframe from scratch
+
+data_dict = {
+    "students" : ["Amy","James","Angela"],
+    "scores" : [76,56,65]
+}
+
+new =pd.DataFrame(data_dict)
+print(new)
