@@ -40,7 +40,7 @@ def convert_CtoF(temp):
 
 monday = data[data.day == "Monday"]
 monday_temp = monday.temp
-print(convert_CtoF(monday_temp))
+# print(convert_CtoF(monday_temp))
 
 # print(convert_CtoF(data.temp == monday))
 
@@ -56,4 +56,7 @@ data_dict = {
 }
 
 new =pd.DataFrame(data_dict)
-print(new)
+# print(new)
+
+new.to_csv("new_data.csv")
+
