@@ -19,15 +19,23 @@ class StateObject(turtle.Turtle):
         state_location = states[states["state"] == user_input]
         go_to_location = state_location[(states["x"],states["y"])]
         self.goto(state_location)
+
+
+#create dataframe from CSV file
+states = pd.read_csv("50_states.csv")
         
 #Get user input
 answer_state = screen.textinput(title = "Guess the State",prompt = "What's another state's name?")
 #convert user input to Title Case
 user_input = answer_state.title()
-#create dataframe from CSV file
-states = pd.read_csv("50_states.csv")
-
-state_name = StateObject()
+print_object = turtle.Turtle()
+print_object.hideturtle()
+print_object.write(user_input,font=30)
+target_state = states[states.state == user_input]
+goto_x = target_state["x"]
+goto_y = target_state["y"] 
+# print(target_state)
+print_object.goto(goto_x,goto_y)
 
 #TODO check if answer_state.Title() is in list of states
 #IF YES
@@ -38,9 +46,9 @@ state_name = StateObject()
 def check_input(user_input):
     for state in states["state"]:
         if input == state:
-            print("Y")
+            return True
         else:
-            print("N")
+            return False
 
 # print(check_input(user_input))
 
