@@ -20,12 +20,14 @@ if answer_state in all_states:
     t.hideturtle()
     t.penup()
     state_data = data[data.state == answer_state]
-    t.write(answer_state,font=40)
-    t.goto(int(state_data.x),int(state_data.y))
-    # print(f"the xcor for {answer_state} is {go_to_x}")
-    # print(f"the ycor for {answer_state} is {go_to_y}")
+    t.goto(state_data.x.item(),state_data.y.item())
+    t.write(answer_state,font=30)
 else:
-    print(f"Sorry, {answer_state} is not a US state")
+    # print(f"Sorry, {answer_state} is not a US state")
+    x = turtle.Turtle()
+    x.hideturtle()
+    x.penup()
+    x.write("Sorry, not a state.",font = 30)
 
 
 #TODO record correct guesses in a list
