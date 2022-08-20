@@ -13,42 +13,37 @@ class StateObject(turtle.Turtle):
         super().__init__()
         self.shape("square")
         self.shapesize(1,2)
-        self.write("TEST TEXT", True, align="center")
         self.penup()
-        #user_input -> state -> lookup x,y in states dataframe
-        state_location = states[states["state"] == user_input]
-        go_to_location = state_location[(states["x"],states["y"])]
-        self.goto(state_location)
 
 
 #create dataframe from CSV file
-states = pd.read_csv("50_states.csv")
+data = pd.read_csv("50_states.csv")
+all_states = data["state"].to_list()
+# print(all_states)
         
 #Get user input
-answer_state = screen.textinput(title = "Guess the State",prompt = "What's another state's name?")
-#convert user input to Title Case
-user_input = answer_state.title()
-print_object = turtle.Turtle()
-print_object.hideturtle()
-print_object.write(user_input,font=30)
-target_state = states[states.state == user_input]
-goto_x = target_state["x"]
-goto_y = target_state["y"] 
-# print(target_state)
-print_object.goto(goto_x,goto_y)
+answer_state = screen.textinput(title = "Guess the State",prompt = "What's another state's name?").title()
+
+if answer_state in all_states:
+    t = turtle.Turtle()
+    t.hideturtle()
+    t.penup()
+    t.write(answer_state,font=30)
+    state_data = data[data.state == answer_state]
+    go_to_x = int(state_data.x)
+    go_to_y = int(state_data.y)
+    print(f"the xcor for {answer_state} is {go_to_x}")
+    print(f"the ycor for {answer_state} is {go_to_y}")
+    t.goto(go_to_x,go_to_y)
+else:
+    print(f"I'm sorry, {answer_state} is not a US state")
 
 #TODO check if answer_state.Title() is in list of states
-#IF YES
+# IF YES
     #TODO write Guess to screen at x,y value
 #IF NO
     #ask user to make another guess
 
-def check_input(user_input):
-    for state in states["state"]:
-        if input == state:
-            return True
-        else:
-            return False
 
 # print(check_input(user_input))
 
