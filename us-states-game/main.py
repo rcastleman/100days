@@ -12,25 +12,20 @@ data = pd.read_csv("50_states.csv")
 #create list so can find membership (??)
 all_states = data["state"].to_list()
         
-#Get user input
-answer_state = screen.textinput(title = "Guess the State",prompt = "What's another state's name?").title()
+guessed_states = []
 
-if answer_state in all_states:
-    t = turtle.Turtle()
-    t.hideturtle()
-    t.penup()
-    state_data = data[data.state == answer_state]
-    t.goto(state_data.x.item(),state_data.y.item())
-    t.write(answer_state,font=30)
-else:
-    # print(f"Sorry, {answer_state} is not a US state")
-    x = turtle.Turtle()
-    x.hideturtle()
-    x.penup()
-    x.write("Sorry, not a state.",font = 30)
+while len(guessed_states) < 50:
 
+    answer_state = screen.textinput(title = f"{len(guessed_states)} /50 States Correct",
+    prompt = "What's another state's name?").title()
 
-#TODO record correct guesses in a list
-#TODO keep track of score
+    if answer_state in all_states:
+        guessed_states.append(answer_state)
+        t = turtle.Turtle()
+        t.hideturtle()
+        t.penup()
+        state_data = data[data.state == answer_state]
+        t.goto(state_data.x.item(),state_data.y.item())
+        t.write(answer_state,font=30)
 
 screen.exitonclick()
