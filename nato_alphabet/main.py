@@ -36,4 +36,3 @@ print(alpha_dict)
 user_input = input("Please enter a word: ")
 result = [alpha_dict[letter] for letter in user_input.upper()]
 print(result)
-
