@@ -1,4 +1,4 @@
-from sqlite3 import Date
+from itertools import count
 from tkinter import *
 import time
 import datetime
@@ -13,36 +13,29 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 
-# ---------------------------- TIMER RESET ------------------------------- # 
-
-def reset_timer():
-    pass
-
-reset_button = Button(text="Reset", command=reset_timer)
-reset_button.grid(column=2,row=2)
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
-def timer():
-    total_seconds = 25*60*60
-    pomodoro_count = 0
+# def countdown():
+#     t = 25*60
+    
+#     while t > 0:
+#         mins, secs = divmod(t, 60)
+#         timer = '{:02d}:{:02d}'.format(mins, secs)
+#         # print(timer, end="\r")
+#         # canvas.create_text(textvariable = timer)
+#         time.sleep(1)
+#         t -= 1
 
-    while total_seconds > 0:
-        timer = datetime.timedelta(seconds =  total_seconds)
-        canvas.create_text.config(text = timer)
-        time.sleep(1)
-        total_seconds -= 1
+# ---------------------------- START BUTTON --------------------------------- # 
 
-    pomodoro_count += 1
-    print("Time's Up!")
 
-start_button = Button(text="Start", command=timer)
-start_button.grid(column=0,row=2)
+
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 
-countdown_label = Label(text = "✓",fg = GREEN)
-countdown_label.grid(column=1,row=3)
+# countdown_label = Label(text = "✓",fg = GREEN)
+# countdown_label.grid(column=1,row=3)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -51,17 +44,21 @@ window = Tk()
 window.title("Pomodoro")
 window.config(padx=100,pady=50,bg = YELLOW)
 
-# timer label
-# time_label = Label(text = "Timer",font = (FONT_NAME,40,"bold"))
-# countdown_label.grid(column=1,row=0)
+title_label = Label(text = "Timer",fg = GREEN, bg = YELLOW,font = (FONT_NAME,50))
+title_label.grid(column=1,row=0)
 
-#canvas
 canvas = Canvas(width=200, height=224,bg = YELLOW,highlightthickness=0)
 tomato_img = PhotoImage(file="tomato.png")
 canvas.create_image(100,112,image=tomato_img)
-canvas.grid(column=1,row=1)
-canvas.create_text(100,130,text=timer,
+canvas.create_text(100,130,text="00:00",
 fill = "white",
 font = (FONT_NAME,35,"bold"))
+canvas.grid(column=1,row=1)
+
+start_button = Button(text="Start")
+start_button.grid(column=0,row=2)
+
+reset_button = Button(text="Reset")
+reset_button.grid(column=2,row=2)
 
 window.mainloop()
