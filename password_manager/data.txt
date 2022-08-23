@@ -1,1 +1,2 @@
-site | rcastleman@gmail.com | pass
+site 1 | rcastleman@gmail.com | pass 1
+site 2 | mail 2 | pass 2

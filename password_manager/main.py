@@ -16,17 +16,18 @@ from turtle import clear
 # use Write to file method
 # use delete() to clear entries after Add button is used
 
+def clear_fields():
+    website_entry.delete(0,END)
+    user_entry.delete(0,END)
+    password_entry.delete(0,END)
+
 def save():
     with open ("data.txt","a") as file:
         site = website_entry.get()
         email = user_entry.get()
         password = password_entry.get()
-        file.write(f"{site} | {email} | {password}")
-
-def clear_fields():
-    website_entry.delete(0,END)
-    user_entry.delete(0,END)
-    password_entry.delete(0,END)
+        file.write(f"{site} | {email} | {password}\n")
+        clear_fields()
 
 # ---------------------------- UI SETUP ------------------------------- #
 
