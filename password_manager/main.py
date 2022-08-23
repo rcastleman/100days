@@ -1,20 +1,36 @@
-from asyncio.proactor_events import _ProactorBaseWritePipeTransport
-from readline import insert_text
 from tkinter import *
+from tkinter import messagebox
 from tkinter.ttk import Separator
 from turtle import clear
+import random
+
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+nr_letters = random.randint(8, 10)
+nr_symbols = random.randint(2, 4)
+nr_numbers = random.randint(2, 4)
+
+pass_letters = [random.choice(letters) for _ in range(nr_letters)]
+pass_symbols = [random.choice(symbols) for _ in range(nr_symbols)]
+pass_numbers = [random.choice(numbers) for _ in range(nr_numbers)]
+
+password_list = pass_letters + pass_symbols + pass_numbers
+
+random.shuffle(password_list)
+
+password = ""
+for char in password_list:
+  password += char
+
+print(password)
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
-
-# using ADD button, save entered info (website,email,password) into data.txt
-# separator = "|" or whatever
-
-# user tkinter insert() method
-# use Write to file method
-# use delete() to clear entries after Add button is used
 
 def clear_fields():
     website_entry.delete(0,END)
@@ -23,11 +39,18 @@ def clear_fields():
 
 def save():
     with open ("data.txt","a") as file:
+
         site = website_entry.get()
         email = user_entry.get()
         password = password_entry.get()
-        file.write(f"{site} | {email} | {password}\n")
-        clear_fields()
+
+        if len(site) == 0 or len(email) == 0 or len(password) == 0:
+            messagebox.showinfo(message="Don't leave any fields empty")
+        else:
+            is_okay = messagebox.askokcancel(title=site,message=f"You entered: \nemail: {email} \nsite: {site} \npassword: {password}")
+            if is_okay:
+                file.write(f"{site} | {email} | {password}\n")
+                clear_fields()
 
 # ---------------------------- UI SETUP ------------------------------- #
 
