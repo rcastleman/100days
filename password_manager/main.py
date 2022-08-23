@@ -9,7 +9,7 @@ from tkinter import *
 
 window = Tk()
 window.title("Password Manager")
-window.config(padx = 20,pady = 20)
+window.config(padx = 50,pady = 50)
 
 canvas = Canvas(height=200,width=200)
 logo_img = PhotoImage(file="logo.png")
@@ -37,8 +37,8 @@ password_label = Label(text="Password: ")
 password_label.grid(column=0,row=3)
 
 #password box (1,3,width = 21)
-password_box = Label(text="(Password will go here)",width = 21)
-password_box.grid(column=1,row=3)
+password_entry = Entry(width = 21)
+password_entry.grid(column=1,row=3)
 
 #generate button (2,3)
 generate_button = Button(text = "Generate Password")
