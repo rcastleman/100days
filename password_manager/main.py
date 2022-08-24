@@ -4,6 +4,7 @@ from tkinter.ttk import Separator
 from turtle import clear
 from random import choice,randint,shuffle
 import pyperclip 
+import json 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
@@ -34,18 +35,25 @@ def clear_fields():
     password_entry.delete(0,END)
 
 def save():
-    with open ("data.txt","a") as file:
-
+    
         site = website_entry.get()
         email = user_entry.get()
         password = password_entry.get()
 
+        new_data = {
+        site: {
+            "email": email,
+            "password": password
+        }
+    }
+
         if len(site) == 0 or len(email) == 0 or len(password) == 0:
             messagebox.showinfo(message="Don't leave any fields empty")
         else:
-            is_okay = messagebox.askokcancel(title=site,message=f"You entered: \nemail: {email} \nsite: {site} \npassword: {password}")
-            if is_okay:
-                file.write(f"{site} | {email} | {password}\n")
+            with open ("data.json","r") as file:
+                # json.dump(new_data,file,indent=4)
+                data = json.load(file)
+                print(data)
                 clear_fields()
 
 # ---------------------------- UI SETUP ------------------------------- #
