@@ -6,10 +6,38 @@ from random import choice,randint,shuffle
 import pyperclip 
 import json 
 
+#DONE add a search button
+#DONE create find_password()
+#DONE link find_password to search button
+#DONE search data.json
+#DONE YES -> messagebox with [website] and [password]
+#TODO Catch exception if data.json does exist
+#TODO NO -> messagebox "Site not found"
+
+
+def find_password():
+    
+    query = website_entry.get()
+    try: 
+        with open("data.json", "r") as data_file:
+                data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showinfo(message="Sorry, there are no records in the Password Manager yet")
+    else:
+        for entry in data:
+                if entry == query:
+                    email = data[entry]["email"]
+                    password = data[entry]["password"]
+                # print(query,email,password)
+        messagebox.showinfo(message=f"website: {query} \nemail: {email} \npassword: {password}")
+
+
+
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
-
+  
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
@@ -78,12 +106,12 @@ canvas.create_image(100,100, image=logo_img)
 canvas.grid(column=1,row=0)
 
 #website label (col=0,row=1)
-website_label = Label(text="Website: ")
+website_label = Label(text="Website: ",width=21)
 website_label.grid(column=0,row=1)
 
 #website entry (col = 1,row = 1,columnspan = 2,width = 35 )
-website_entry = Entry(width=35)
-website_entry.grid(column=1,row=1,columnspan=2)
+website_entry = Entry(width=21)
+website_entry.grid(column=1,row=1,columnspan=1)
 website_entry.focus()
 
 #user label (0,2)
@@ -106,6 +134,10 @@ password_entry.grid(column=1,row=3)
 #generate button (2,3)
 generate_button = Button(text = "Generate Password",command=generate_password)
 generate_button.grid(column=2,row=3)
+
+#search button 
+search_button = Button(text = "Search",width=12,command=find_password)
+search_button.grid(column=2,row=1)
 
 #add button (1,4,colspan = 2,width = 36)
 add_button = Button(text = "Add to Clipboard",width = 36,command=save)
