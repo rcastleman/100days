@@ -36,24 +36,29 @@ def clear_fields():
 
 def save():
     
-        site = website_entry.get()
+        website = website_entry.get()
         email = user_entry.get()
         password = password_entry.get()
 
         new_data = {
-        site: {
+        website: {
             "email": email,
             "password": password
         }
     }
-
-        if len(site) == 0 or len(email) == 0 or len(password) == 0:
+        if len(website) == 0 or len(email) == 0 or len(password) == 0:
             messagebox.showinfo(message="Don't leave any fields empty")
         else:
-            with open ("data.json","r") as file:
-                # json.dump(new_data,file,indent=4)
+            with open ("data.json","w") as file:
+                #read old data
                 data = json.load(file)
-                print(data)
+                #update old data with new data
+                data.update(new_data)
+                #save updated data
+                json.dump(new_data,file,indent=4)
+
+
+                # print(data)
                 clear_fields()
 
 # ---------------------------- UI SETUP ------------------------------- #
