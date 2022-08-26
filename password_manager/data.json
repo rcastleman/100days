@@ -1,10 +1,14 @@
 {
     "amazon": {
         "email": "rcastleman@gmail.com",
-        "password": "GWw$4J(a4TToz$8"
+        "password": "PnD3HP#8(6Q1%HK"
     },
-    "ebay": {
-        "email": "rcastleman@gmail.com",
-        "password": "FKW2)4LBV9jy8)"
+    "twitter": {
+        "email": "email",
+        "password": "u&!L8I6mtA$D11S"
+    },
+    "Ebay": {
+        "email": "email",
+        "password": "kr&Py)p0JH4mgG"
     }
 }

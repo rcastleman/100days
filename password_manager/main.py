@@ -14,23 +14,22 @@ import json
 #TODO Catch exception if data.json does exist
 #TODO NO -> messagebox "Site not found"
 
+# ---------------------------- FIND PASSWORD ------------------------------- #
 
 def find_password():
-    
-    query = website_entry.get()
-
+    website = website_entry.get()
     try: 
-        with open("data.json", "r") as data_file:
+        with open("data.json") as data_file:
                 data = json.load(data_file)
     except FileNotFoundError:
-        messagebox.showinfo(message="Sorry, there are no records in the Password Manager yet")
+        messagebox.showinfo(title="Error", message="No Data File Found.")
     else:
-        for entry in data:
-                if entry == query:
-                    email = data[entry]["email"]
-                    password = data[entry]["password"]
-        messagebox.showinfo(message=f"website: {query} \nemail: {email} \npassword: {password}")
-
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"website: {website} \nemail: {email} \npassword: {password}")
+        else:
+            messagebox.showinfo(title="Error", message=f"No record for '{website}' was found.")
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
