@@ -18,6 +18,7 @@ import json
 def find_password():
     
     query = website_entry.get()
+
     try: 
         with open("data.json", "r") as data_file:
                 data = json.load(data_file)
@@ -28,10 +29,7 @@ def find_password():
                 if entry == query:
                     email = data[entry]["email"]
                     password = data[entry]["password"]
-                # print(query,email,password)
         messagebox.showinfo(message=f"website: {query} \nemail: {email} \npassword: {password}")
-
-
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
