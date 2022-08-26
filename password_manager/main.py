@@ -29,7 +29,7 @@ def find_password():
             password = data[website]["password"]
             messagebox.showinfo(title=website, message=f"website: {website} \nemail: {email} \npassword: {password}")
         else:
-            messagebox.showinfo(title="Error", message=f"No record for '{website}' was found.")
+            messagebox.showinfo(title = "Error", message = f"No record for '{website}' was found.")
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
