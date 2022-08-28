@@ -28,11 +28,12 @@ canvas.grid(row=0,column=0,columnspan=2)
 
 #X Mark
 cross_image = PhotoImage(file="images/wrong.png")
-unknown_button = Button(image=cross_image)
+unknown_button = Button(image=cross_image,highlightthickness=0)
 unknown_button.grid(row=1,column=0)
 
+#check mark
 check_image = PhotoImage(file="images/right.png")
-known_button = Button(image=check_image)
+known_button = Button(image=check_image,highlightthickness=0)
 known_button.grid(row=1,column=1)
 
 # flash_back = Canvas(height=526,width=800)
