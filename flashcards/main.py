@@ -16,16 +16,25 @@ if os.path.exists("data/words_to_learn.csv"):
 else:
     data = pd.read_csv("data/french_words.csv")
 
+
+#------------------ data structures -----------------#
+
+
 learned_words = []
+
+to_learn = data.to_dict(orient="records")
 
 #dataframe -> list
 output_list = data.values.tolist()
 print(output_list)
 # remove learned word from list
 
-def mark_for_removal(word):
+#------------------ functions -----------------------#
+
+
+def is_known(word):
     """adds a word to the learned_words list, marking it for removal"""
-    learned_words.append(word)
+    to_learn.remove(word)
 
 def remove_word():
     """removes word from the output_list"""
@@ -33,7 +42,6 @@ def remove_word():
         if word in learned_words:
             output_list.remove(word)
 
-to_learn = data.to_dict(orient="records")
 
 current_card = {}
 
