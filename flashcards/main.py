@@ -15,17 +15,17 @@ to_learn = data.to_dict(orient="records")
 def next_card():
     current_card = random.choice(list(to_learn))
     canvas.itemconfig(card_title,text="French")
-    canvas.itemconfig(card_word,text=current_card['French'])
-    #time
-    #change to English
+    canvas.itemconfig(card_word,text=current_card["French"])
+
+def flip_card():
+    canvas.itemconfig(card_title, text="English")
+    canvas.itemconfig(card_word,text=current_card["English"])
 
 #------------------ UI -----------------------#
-
-# card_back = PhotoImage(file="/images/card_back.png")
-
 window = Tk()
 window.title("Flashcards")
 window.config(padx = 50,pady = 50,bg = BACKGROUND_COLOR)
+window.after(3000,func=flip_card)
 
 canvas = Canvas(width=800,height=526)
 card_front_img = PhotoImage(file="images/card_front.png")
@@ -44,13 +44,6 @@ unknown_button.grid(row=1,column=0)
 check_image = PhotoImage(file="images/right.png")
 known_button = Button(image=check_image,highlightthickness=0,command=next_card)
 known_button.grid(row=1,column=1)
-
-# flash_back = Canvas(height=526,width=800)
-# logo_img = PhotoImage(file="logo.png")
-# flash_back.create_image(300,400, image=card_front)
-# flash_back.grid(column=1,row=0,columnspan=2)
-
-# button = Button(image=my_image, highlightthickness=0)
 
 next_card()
 
