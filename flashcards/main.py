@@ -19,29 +19,25 @@ else:
 
 #------------------ data structures -----------------#
 
-
 learned_words = []
 
 to_learn = data.to_dict(orient="records")
 
 #dataframe -> list
-output_list = data.values.tolist()
-print(output_list)
+# output_list = data.values.tolist()
+# print(output_list)
 # remove learned word from list
 
 #------------------ functions -----------------------#
 
 
-def is_known(word):
-    """adds a word to the learned_words list, marking it for removal"""
-    to_learn.remove(word)
-
-def remove_word():
-    """removes word from the output_list"""
-    for word in output_list:
-        if word in learned_words:
-            output_list.remove(word)
-
+def is_known():
+    """removes current_card from the list of dicts, creates new CSV via a dataframe with remaining entries"""
+    to_learn.remove(current_card)
+    print(len(to_learn))
+    next_card()
+    data = pd.DataFrame(to_learn)
+    data.to_csv("data/words_to_learn.csv")
 
 current_card = {}
 
@@ -82,7 +78,7 @@ unknown_button.grid(row=1,column=0)
 
 #check mark
 check_image = PhotoImage(file="images/right.png")
-known_button = Button(image=check_image,highlightthickness=0,command=next_card)
+known_button = Button(image=check_image,highlightthickness=0,command=is_known)
 known_button.grid(row=1,column=1)
 
 next_card()
