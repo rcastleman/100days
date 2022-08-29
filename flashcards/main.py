@@ -1,11 +1,9 @@
-from curses import flash
 import fileinput
 from tkinter import *
 from turtle import clear
 import random
 import pandas as pd
 import os.path
-
 
 BACKGROUND_COLOR = "#B1DDC6"
 
