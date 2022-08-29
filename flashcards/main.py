@@ -34,10 +34,10 @@ to_learn = data.to_dict(orient="records")
 def is_known():
     """removes current_card from the list of dicts, creates new CSV via a dataframe with remaining entries"""
     to_learn.remove(current_card)
-    print(len(to_learn))
+    # print(len(to_learn))
     next_card()
     data = pd.DataFrame(to_learn)
-    data.to_csv("data/words_to_learn.csv")
+    data.to_csv("data/words_to_learn.csv",index=False)
 
 current_card = {}
 
