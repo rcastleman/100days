@@ -27,4 +27,4 @@ def send_email(body):
     server.sendmail(gmail_email,send_to,body)
     server.quit()
 
-send_email(email_body)
+# send_email(email_body)
