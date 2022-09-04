@@ -8,23 +8,6 @@ from email_via_python import send_email,hour,minute
 import csv
 import pandas as pd
 
-# TODO Check if today matches a birthday in the birthdays.csv
-# HINT 1: Create a tuple from today's month and day using datetime. e.g.
-# today = (today_month, today_day)
-# HINT 2: Use pandas to read the birthdays.csv
-# HINT 3: Use dictionary comprehension to create a dictionary from birthday.csv that is formated like this:
-# birthdays_dict = {
-#     (birthday_month, birthday_day): data_row
-# }
-#Dictionary comprehension template for pandas DataFrame looks like this:
-# new_dict = {new_key: new_value for (index, data_row) in data.iterrows()}
-#e.g. if the birthdays.csv looked like this:
-# name,email,year,month,day
-# Angela,angela@email.com,1995,12,24
-#Then the birthdays_dict should look like this:
-# birthdays_dict = {
-#     (12, 24): Angela,angela@email.com,1995,12,24
-# }
 #HINT 4: Then you could compare and see if today's month/day tuple matches one of the keys in birthday_dict like this:
 # if (today_month, today_day) in birthdays_dict:
 
@@ -43,25 +26,14 @@ now = dt.datetime.now()
 day = now.day
 month = now.month
 today = (month,day)
-# print(f"Month: {month} Day: {day}")
-# print(target)
 
 data = pd.read_csv("birthdays.csv")
-new_dict = {data_row["month"]:data_row["day"] for (index, data_row) in data.iterrows()}
+birthdays_dict = {(data_row["month"],data_row["day"]):data_row for (index, data_row) in data.iterrows()}
 
-
-
-def send_card():
+def pick_card():
     random_card = random.choice(["letter_templates/letter_1.txt","letter_templates/letter_2.txt","letter_templates/letter_3.txt"])
     return random_card
-    # print(random_card)
 
-def test_isBirthday(month,day):
-    # if data.loc[data['month']] == month and data.loc[data['day']] == day:
-    if data.loc[(df['month'] == month) & (data['day'] == day)]:
-        # send_card()
-        print(f"Sending a card to {data.loc[data['name']]}")
-
-# test_isBirthday(month,day)
-
+if today in birthdays_dict:
+    pick_card()
 
