@@ -4,7 +4,7 @@ import smtplib
 import datetime as dt
 import random
 from socket import TCP_NODELAY
-from email_via_python import send_email,hour,minute
+from email_via_python import send_email
 import csv
 import pandas as pd
 
@@ -35,8 +35,6 @@ if today in birthdays_dict:
     file_path = f"letter_templates/letter_{random.randint(1,3)}.txt"
     with open(file_path) as letter_file:
         contents = letter_file.read()
-        contents.replace('[NAME]',birthday_person['name'])
-
-
-
+        new = contents.replace('[NAME]',birthday_person['name'])
+    send_email(new)
 

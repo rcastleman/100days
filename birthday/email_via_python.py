@@ -24,7 +24,7 @@ def send_email(body):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
     server.login(gmail_email, gmail_password)
-    server.sendmail(gmail_email,send_to,body)
+    server.sendmail(gmail_email,send_to,f"Subject:Happy Birthday!\n\n{body}")
     server.quit()
 
 # send_email(email_body)
