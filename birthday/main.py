@@ -30,10 +30,13 @@ today = (month,day)
 data = pd.read_csv("birthdays.csv")
 birthdays_dict = {(data_row["month"],data_row["day"]):data_row for (index, data_row) in data.iterrows()}
 
-def pick_card():
-    random_card = random.choice(["letter_templates/letter_1.txt","letter_templates/letter_2.txt","letter_templates/letter_3.txt"])
-    return random_card
-
 if today in birthdays_dict:
-    pick_card()
+    birthday_person = birthdays_dict[today]
+    file_path = f"letter_templates/letter_{random.randint(1,3)}.txt"
+    with open(file_path) as letter_file:
+        contents = letter_file.read()
+        contents.replace('[NAME]',birthday_person['name'])
+
+
+
 
