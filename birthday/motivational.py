@@ -6,6 +6,7 @@ import random
 from email_via_python import send_email,hour,minute
 
 
+
 # DONE obtain current day of week
 # DONE check to see if day of week = Target Day
 # DONE open quotes.txt and get LIST of quotes

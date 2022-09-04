@@ -8,13 +8,6 @@ from email_via_python import send_email,hour,minute
 import csv
 import pandas as pd
 
-##################### Normal Starting Project ######################
-
-# DONE Update the birthdays.csv with your friends & family's details. 
-# HINT: Make sure one of the entries matches today's date for testing purposes. e.g.
-#name,email,year,month,day
-#YourName,your_own@email.com,today_year,today_month,today_day
-
 # TODO Check if today matches a birthday in the birthdays.csv
 # HINT 1: Create a tuple from today's month and day using datetime. e.g.
 # today = (today_month, today_day)
@@ -54,18 +47,9 @@ today = (month,day)
 # print(target)
 
 data = pd.read_csv("birthdays.csv")
-# k = 0
-# v = 0
-# birthdays_dict = {k:v for (index, data_row) in data.iterrows()}
-# print(birthdays_dict)
-birthdays_dict = {}
+new_dict = {data_row["month"]:data_row["day"] for (index, data_row) in data.iterrows()}
 
-def generate_dict(data):
-    for index,data_row in data.iterrows():
-        birthdays_dict[index] = data_row
-    print(birthdays_dict)
 
-generate_dict(data)
 
 def send_card():
     random_card = random.choice(["letter_templates/letter_1.txt","letter_templates/letter_2.txt","letter_templates/letter_3.txt"])
