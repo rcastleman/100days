@@ -1,8 +1,20 @@
 from ast import FormattedValue
 import requests
 from datetime import datetime
-from iss.py import iss_latitude,iss_longitude
 from email_engine import send_email
+
+#----------- ISS API --------------- #
+response = requests.get(url = "http://api.open-notify.org/iss-now.json")
+data  = response.json()
+
+position = data['iss_position']['longitude']
+iss_latitude = float(data['iss_position']['latitude'])
+iss_longitude = float(data['iss_position']['longitude'])
+
+print(f"ISS lat: {iss_latitude}")
+print(f"ISS lng: {iss_longitude}")
+
+#----------- Sunrise / Sunset  API --------------- #
 
 MY_LAT = 40.753270
 MY_LNG = -73.971660
@@ -22,9 +34,12 @@ print(f"sunset: {sunset}")
 time_now = datetime.now()
 print(f"local time: {time_now.hour}")
 
-#is ISS within 5 degrees of current lat or long?
+#if the ISS within 5 degrees of current lat or long
+#send email saying "look up"
+
+subject = "ISS overhead!"
+body = "The ISS is passing overhead.  Go outside and take a look!"
 
 def is_overhead():
-    pass
-
-#send email saying "look up"
+    if abs(iss_latitude - MY_LAT) < 5 | abs(iss_longitude - MY_LNG) < 5:
+        send_email(subject=subject,body=body)
