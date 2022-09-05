@@ -16,16 +16,20 @@ print(f"ISS lng: {iss_longitude}")
 
 #----------- Sunrise / Sunset  API --------------- #
 
-MY_LAT = 40.753270
-MY_LNG = -73.971660
+# MY_LAT = 40.753270
+# MY_LNG = -73.971660
+
+MY_LAT = 10.0
+MY_LNG = -59.0
 
 parameters = {"lat":MY_LAT,
-"lng": MY_LNG,"formatted":0}
+"lng": MY_LNG,
+"formatted":0}
 
 response = requests.get(url = "https://api.sunrise-sunset.org/json",params=parameters)
 response.raise_for_status()
 data  = response.json()
-#split out the TIME then the HOUR from the time
+
 sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
 sunset = int(data["results"]["sunset"].split("T")[1].split(":")[0])
 
@@ -41,5 +45,7 @@ subject = "ISS overhead!"
 body = "The ISS is passing overhead.  Go outside and take a look!"
 
 def is_overhead():
-    if abs(iss_latitude - MY_LAT) < 5 | abs(iss_longitude - MY_LNG) < 5:
+    if abs(iss_latitude - MY_LAT) < 5 or abs(iss_longitude - MY_LNG) < 5:
         send_email(subject=subject,body=body)
+
+is_overhead()
