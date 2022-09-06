@@ -1,4 +1,6 @@
 from tkinter import *
+from quiz_brain import QuizBrain
+
 
 THEME_COLOR = "#375362"
 
@@ -10,7 +12,9 @@ def mark_true():
 
 class QuizInterface:
 
-    def __init__(self) -> None:
+    def __init__(self,quiz_brain: QuizBrain) -> None:
+
+        self.quiz = quiz_brain
 
         self.window = Tk()
         self.window.title("Quizzler")
@@ -33,3 +37,6 @@ class QuizInterface:
         self.true_button.grid(column=0,row=2)
 
         self.window.mainloop()
+
+def get_next_question(self):
+    self.quiz.next_question()
