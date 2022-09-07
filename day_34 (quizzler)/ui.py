@@ -1,14 +1,14 @@
 from tkinter import *
 from quiz_brain import QuizBrain
 
-
 THEME_COLOR = "#375362"
 
-def mark_false():
-    pass
+def mark_true(self):
+    self.check_answer(True)
 
-def mark_true():
-    pass
+def mark_false(self):
+    self.check_answer(False)
+
 
 class QuizInterface:
 
