@@ -24,7 +24,12 @@ class QuizInterface:
         self.score_label.grid(column=1,row=0)
 
         self.canvas = Canvas(width=300,height=250,bg="white")
-        self.question_text = self.canvas.create_text(150,125,text="Some Question Text...",fill = THEME_COLOR,font=("arial",20,"italic"))
+        self.question_text = self.canvas.create_text(150,
+        125,
+        width=280,
+        text="Some Question Text...",
+        fill = THEME_COLOR,
+        font=("arial",20,"italic"))
         self.canvas.grid(column=0,row=1,columnspan=2,pady=50)
 
         false_image = PhotoImage(file="images/false.png")
@@ -39,6 +44,6 @@ class QuizInterface:
 
         self.window.mainloop()
 
-def get_next_question(self):
-    q_text = self.quiz.next_question()
-    self.canvas.itemconfig(self.question_text,text = q_text)
+    def get_next_question(self):
+        q_text = self.quiz.next_question()
+        self.canvas.itemconfig(self.question_text,text=q_text)
