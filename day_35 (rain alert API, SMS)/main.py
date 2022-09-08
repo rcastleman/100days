@@ -1,6 +1,9 @@
 from operator import truediv
 from xmlrpc.client import FastMarshaller
 import requests
+import os
+from twilio.rest import Client
+
 
 # https://home.openweathermap.org/api_keys
 
