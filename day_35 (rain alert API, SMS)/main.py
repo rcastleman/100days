@@ -4,16 +4,14 @@ import requests
 import os
 from twilio.rest import Client
 
-TWILIO_ACCOUNT_SID = "ACdfb774e0c104504eb9da3842343bbff7"
-TWILIO_AUTH_TOKEN = "a89fe5de4e42c89804e406aeb27f7807"
+TWILIO_ACCOUNT_SID = "xxx"
+TWILIO_AUTH_TOKEN = "yyy"
 TWILIO_PHONE = "+19855895764"
 TARGET_PHONE = "+14348254811"
 
 # https://home.openweathermap.org/api_keys
 
-API_KEY = "8f21e2683deb718640c8241bb5e63746"
-one_call_API = "52b9cd8ce0541eaea09c5c01dbbf4609"
-four_days_API = "b299b8818c68292f1fa725c78a75a35e"
+API_KEY = "zzz"
 NYC_LAT = 40.753270
 NYC_LNG = -73.971660
 TEST_LAT = 44.866623
