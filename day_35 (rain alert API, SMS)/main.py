@@ -60,5 +60,3 @@ if will_rain:
         )
 
     print(message.status)
-# new line to test ignore ... and another bit
-# update 2037
