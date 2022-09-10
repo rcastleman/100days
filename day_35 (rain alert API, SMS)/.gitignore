@@ -4,3 +4,6 @@ new_file.txt
 **/.DS_Store
 secrets.txt
 secrets.*
+secrets.py
+secret_sms.py
+*.venv
