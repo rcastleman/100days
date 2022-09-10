@@ -1,6 +1,5 @@
 import os
 from secrets import SID
-from telnetlib import AUTHENTICATION
 from twilio.rest import Client
 import secrets
 
@@ -9,6 +8,9 @@ TARGET_PHONE = "+14348254811"
 
 account_sid = secrets.SID
 auth_token = secrets.AUTH
+
+# account_sid = secrets.TEST_SID
+# auth_token = secrets.TEST_AUTH
 
 client = Client(account_sid, auth_token)
 
