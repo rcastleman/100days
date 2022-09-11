@@ -1,4 +1,4 @@
-from pickle import FALSE
+from pickle import FALSE, TRUE
 from subprocess import call
 import secrets
 
@@ -8,12 +8,13 @@ import requests
 from twilio.rest import Client
 from twilio.http.http_client import TwilioHttpClient
 
-from secrets import ALPHA_KEY
 
 #-------------- global variables ---------------------#
 
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
+
+TRIGGER = 20
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
@@ -89,17 +90,30 @@ def send_notification():
 
 #-------------------- main loop ----------------------------#
 
-today_date = date.today()
-yesterday_date = today_date - timedelta(days = 1)
+# today_date = date.today()
+# yesterday_date = today_date - timedelta(days = 1)
 
-notify = FALSE
+today_date = "2022-09-09"
+yesterday_date = "2022-09-08"
 
-while not notify:
-    response = requests.get(STOCK_ENDPOINT,params=parameters)
-    response.raise_for_status()
-    data = response.json()
-    today = int(data["Time Series (Daily)"][today_date]["4. close"])
-    yesterday = int(data["Time Series (Daily)"][yesterday_date]["4. close"])
-    if abs(today/yesterday_date> 1.05):
+today = 120
+yesterday = 125
+
+# notify = FALSE
+
+# while not notify:
+def mainloop():
+    # response = requests.get(STOCK_ENDPOINT,params=parameters)
+    # response.raise_for_status()
+    # data = response.json()
+    # today = data["Time Series (Daily)"][today_date]["4. close"]
+    # yesterday = data["Time Series (Daily)"][yesterday_date]["4. close"]
+    ratio = 100*(abs(float(today)/float(yesterday))-1)
+    if ratio > TRIGGER:
         # send_notification()
-        print("BINGO!")
+        # notify = TRUE
+        print(f"The delta was {ratio}%, so Get News!")
+    else:
+        print(f"The delta only {ratio}%. Nothing to see here...")
+
+mainloop()
