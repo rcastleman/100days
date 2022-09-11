@@ -21,6 +21,8 @@ NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 TWILIO_PHONE = "+19855895764"
 TARGET_PHONE = "+14348254811"
 
+#----------------- hints -----------------------------#
+
     ## STEP 1: Use https://www.alphavantage.co/documentation/#daily
 # When stock price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
 
@@ -50,7 +52,6 @@ TARGET_PHONE = "+14348254811"
 #TODO 9. - Send each article as a separate message via Twilio. 
 
 
-
 #Optional TODO: Format the message like this: 
 """
 TSLA: 🔺2%
@@ -65,18 +66,16 @@ Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and 
 # demo API call
 # https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo
 
+#-------------------- API parameters --------------------#
+
 parameters = {"function": "TIME_SERIES_DAILY",
 "symbol":"TSLA",
 "apikey":ALPHA_KEY}
 
-today_date = date.today()
-yesterday_date = today_date - timedelta(days = 1)
-
-print(f"Today's date: {today_date}")
-print(f"Yesterday: {yesterday_date}")
-
 account_sid = secrets.SID
 auth_token = secrets.AUTH
+
+#-------------------- helper functions --------------------#
 
 def send_notification():
 
@@ -86,8 +85,12 @@ def send_notification():
         from_=TWILIO_PHONE,
         to=TARGET_PHONE
                           )
-print(message.sid)
+    print(message.sid)
 
+#-------------------- main loop ----------------------------#
+
+today_date = date.today()
+yesterday_date = today_date - timedelta(days = 1)
 
 notify = FALSE
 
@@ -95,8 +98,8 @@ while not notify:
     response = requests.get(STOCK_ENDPOINT,params=parameters)
     response.raise_for_status()
     data = response.json()
-    today = int(data["Time Series (Daily)"][today_date]["4. close""])
-    yesterday = int(data["Time Series (Daily)"][yesterday_date]["4. close""])
+    today = int(data["Time Series (Daily)"][today_date]["4. close"])
+    yesterday = int(data["Time Series (Daily)"][yesterday_date]["4. close"])
     if abs(today/yesterday_date> 1.05):
-        send_notification()
-    
+        # send_notification()
+        print("BINGO!")
