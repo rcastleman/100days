@@ -98,3 +98,4 @@ while not notify:
     if abs(today/yesterday_date> 1.05):
         send_notification()
     
+# random changes to test f*ing git
