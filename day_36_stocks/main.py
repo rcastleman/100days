@@ -10,6 +10,8 @@ from twilio.http.http_client import TwilioHttpClient
 
 from secrets import ALPHA_KEY
 
+#-------------- global variables ---------------------#
+
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
@@ -98,4 +100,3 @@ while not notify:
     if abs(today/yesterday_date> 1.05):
         send_notification()
     
-# random changes to test f*ing git
