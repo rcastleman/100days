@@ -14,7 +14,8 @@ from twilio.http.http_client import TwilioHttpClient
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
-TRIGGER = 20
+#trigger amount (%)
+TRIGGER = 5
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
@@ -71,7 +72,7 @@ Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and 
 
 parameters = {"function": "TIME_SERIES_DAILY",
 "symbol":"TSLA",
-"apikey":ALPHA_KEY}
+"apikey":secrets.ALPHA_KEY}
 
 account_sid = secrets.SID
 auth_token = secrets.AUTH
@@ -93,27 +94,25 @@ def send_notification():
 # today_date = date.today()
 # yesterday_date = today_date - timedelta(days = 1)
 
+# dummy hard-coded data for testing
 today_date = "2022-09-09"
 yesterday_date = "2022-09-08"
+# today = 120
+# yesterday = 125
 
-today = 120
-yesterday = 125
-
-# notify = FALSE
+notify = FALSE
 
 # while not notify:
-def mainloop():
-    # response = requests.get(STOCK_ENDPOINT,params=parameters)
-    # response.raise_for_status()
-    # data = response.json()
-    # today = data["Time Series (Daily)"][today_date]["4. close"]
-    # yesterday = data["Time Series (Daily)"][yesterday_date]["4. close"]
-    ratio = 100*(abs(float(today)/float(yesterday))-1)
-    if ratio > TRIGGER:
-        # send_notification()
-        # notify = TRUE
-        print(f"The delta was {ratio}%, so Get News!")
-    else:
-        print(f"The delta only {ratio}%. Nothing to see here...")
 
-mainloop()
+response = requests.get(STOCK_ENDPOINT,params=parameters)
+response.raise_for_status()
+data = response.json()
+today = data["Time Series (Daily)"][today_date]["4. close"]
+yesterday = data["Time Series (Daily)"][yesterday_date]["4. close"]
+ratio = 100*(abs(float(today)/float(yesterday))-1)
+if ratio > TRIGGER:
+    # send_notification()
+    # notify = TRUE
+    print(f"The delta was {ratio}%, so Get News!")
+else:
+    print(f"The delta only {ratio}%. Nothing to see here...")
