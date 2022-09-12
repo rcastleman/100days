@@ -71,16 +71,18 @@ Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and 
 
 #-------------------- API parameters --------------------#
 
+account_sid = secrets.SID
+auth_token = secrets.AUTH
+
 stock_parameters = {"function": "TIME_SERIES_DAILY",
 "symbol":"TSLA",
 "apikey":secrets.ALPHA_KEY}
 
-account_sid = secrets.SID
-auth_token = secrets.AUTH
-
 news_parameters = {"q":COMPANY_NAME,
 "apiKey":secrets.NEWS_KEY,
 "searchIn":"title",
+"from":"2022-09-10",
+"to":date.today(),
 }
 
 #-------------------- helper functions --------------------#
@@ -103,21 +105,23 @@ def send_notification():
 # dummy hard-coded data for testing
 today_date = "2022-09-09"
 yesterday_date = "2022-09-08"
-# today = 120
-# yesterday = 125
+today = 150
+yesterday = 125
 
-notify = FALSE
+# notify = FALSE
 
 # while not notify:
 
-response = requests.get(STOCK_ENDPOINT,params=stock_parameters)
-response.raise_for_status()
-data = response.json()
-today = data["Time Series (Daily)"][today_date]["4. close"]
-yesterday = data["Time Series (Daily)"][yesterday_date]["4. close"]
+# response = requests.get(STOCK_ENDPOINT,params=stock_parameters)
+# response.raise_for_status()
+# data = response.json()
+# today = data["Time Series (Daily)"][today_date]["4. close"]
+# yesterday = data["Time Series (Daily)"][yesterday_date]["4. close"]
 ratio = 100*(abs(float(today)/float(yesterday))-1)
 if ratio > TRIGGER:
     news_response = requests.get(NEWS_ENDPOINT,params=news_parameters)
     news_response.raise_for_status()
-    data = news_response.jason()
-    print()
+    news_data = news_response.json()
+    articles = news_data["articles"][0:3]
+    formatted_articles = [f"Headline: {article['title']}.\nDescription: {article['description']}" for article in articles]
+    print(formatted_articles)
