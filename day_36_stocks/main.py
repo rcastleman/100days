@@ -1,4 +1,5 @@
 from pickle import FALSE, TRUE
+from selectors import SelectorKey
 from subprocess import call
 import secrets
 
@@ -70,12 +71,16 @@ Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and 
 
 #-------------------- API parameters --------------------#
 
-parameters = {"function": "TIME_SERIES_DAILY",
+stock_parameters = {"function": "TIME_SERIES_DAILY",
 "symbol":"TSLA",
 "apikey":secrets.ALPHA_KEY}
 
 account_sid = secrets.SID
 auth_token = secrets.AUTH
+
+news_parameters = {"apiKey":secrets.NEWS_KEY,
+
+}
 
 #-------------------- helper functions --------------------#
 
@@ -104,13 +109,14 @@ notify = FALSE
 
 # while not notify:
 
-response = requests.get(STOCK_ENDPOINT,params=parameters)
+response = requests.get(STOCK_ENDPOINT,params=stock_parameters)
 response.raise_for_status()
 data = response.json()
 today = data["Time Series (Daily)"][today_date]["4. close"]
 yesterday = data["Time Series (Daily)"][yesterday_date]["4. close"]
 ratio = 100*(abs(float(today)/float(yesterday))-1)
 if ratio > TRIGGER:
+    response = requests.get(NEWS_ENDPOINT,params=news_parameters)
     # send_notification()
     # notify = TRUE
     print(f"The delta was {ratio}%, so Get News!")
