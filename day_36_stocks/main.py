@@ -59,28 +59,28 @@ def send_notification(message):
 
 #-------------------- main loop ----------------------------#
 
-# today_date = date.today()
-# yesterday_date = today_date - timedelta(days = 1)
+today_date = date.today()
+yesterday_date = today_date - timedelta(days = 1)
 
 # dummy hard-coded data for testing
-today_date = "2022-09-09"
-yesterday_date = "2022-09-08"
-today = 150
-yesterday = 125
+# today_date = "2022-09-09"
+# yesterday_date = "2022-09-08"
+# today = 150
+# yesterday = 125
 
 # notify = FALSE
 
 # while not notify:
 
-# response = requests.get(STOCK_ENDPOINT,params=stock_parameters)
-# response.raise_for_status()
-# data = response.json()
-# today = data["Time Series (Daily)"][today_date]["4. close"]
-# yesterday = data["Time Series (Daily)"][yesterday_date]["4. close"]
+response = requests.get(STOCK_ENDPOINT,params=stock_parameters)
+response.raise_for_status()
+data = response.json()
+today = data["Time Series (Daily)"][today_date]["4. close"]
+yesterday = data["Time Series (Daily)"][yesterday_date]["4. close"]
 ratio = 100*(abs(float(today)/float(yesterday))-1)
 limit = 2
 if ratio > TRIGGER:
-    
+
     news_response = requests.get(NEWS_ENDPOINT,params=news_parameters)
     news_response.raise_for_status()
     news_data = news_response.json()
