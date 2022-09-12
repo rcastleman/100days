@@ -13,9 +13,9 @@ from twilio.http.http_client import TwilioHttpClient
 #-------------- global variables ---------------------#
 
 STOCK_NAME = "TSLA"
-COMPANY_NAME = "Tesla Inc"
+COMPANY_NAME = "Tesla"
 
-#trigger amount (%)
+#trigger (%) above which news is retrieved
 TRIGGER = 5
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
@@ -78,8 +78,9 @@ stock_parameters = {"function": "TIME_SERIES_DAILY",
 account_sid = secrets.SID
 auth_token = secrets.AUTH
 
-news_parameters = {"apiKey":secrets.NEWS_KEY,
-
+news_parameters = {"q":COMPANY_NAME,
+"apiKey":secrets.NEWS_KEY,
+"searchIn":"title",
 }
 
 #-------------------- helper functions --------------------#
@@ -116,9 +117,7 @@ today = data["Time Series (Daily)"][today_date]["4. close"]
 yesterday = data["Time Series (Daily)"][yesterday_date]["4. close"]
 ratio = 100*(abs(float(today)/float(yesterday))-1)
 if ratio > TRIGGER:
-    response = requests.get(NEWS_ENDPOINT,params=news_parameters)
-    # send_notification()
-    # notify = TRUE
-    print(f"The delta was {ratio}%, so Get News!")
-else:
-    print(f"The delta only {ratio}%. Nothing to see here...")
+    news_response = requests.get(NEWS_ENDPOINT,params=news_parameters)
+    news_response.raise_for_status()
+    data = news_response.jason()
+    print()
