@@ -24,25 +24,6 @@ NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 TWILIO_PHONE = "+19855895764"
 TARGET_PHONE = "+14348254811"
 
-#----------------- hints -----------------------------#
-
-# Use https://www.alphavantage.co/documentation/#daily
-
-#  https://newsapi.org/ 
-# STEP 3: Use twilio.com/docs/sms/quickstart/python
-    #to send a separate message with each article's title and description to your phone number. 
-
-
-#Optional TODO: Format the message like this: 
-"""
-TSLA: 🔺2%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-or
-"TSLA: 🔻5%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-"""
 
 # demo API call
 # https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo
@@ -65,15 +46,16 @@ news_parameters = {"q":COMPANY_NAME,
 
 #-------------------- helper functions --------------------#
 
-def send_notification():
+client = Client(account_sid, auth_token)
+
+def send_notification(message):
 
     client = Client(account_sid, auth_token)
     message = client.messages.create(
-        body='Hi there',
+        body=message,
         from_=TWILIO_PHONE,
         to=TARGET_PHONE
                           )
-    print(message.sid)
 
 #-------------------- main loop ----------------------------#
 
@@ -96,26 +78,16 @@ yesterday = 125
 # today = data["Time Series (Daily)"][today_date]["4. close"]
 # yesterday = data["Time Series (Daily)"][yesterday_date]["4. close"]
 ratio = 100*(abs(float(today)/float(yesterday))-1)
-limit = 3
+limit = 2
 if ratio > TRIGGER:
+    
     news_response = requests.get(NEWS_ENDPOINT,params=news_parameters)
     news_response.raise_for_status()
     news_data = news_response.json()
+
     articles = news_data["articles"][0:limit]
     # formatted_articles = [f"Headline: {article['title']}.\nDescription: {article['description']}" for article in articles]
     formatted_articles = [f"Headline: {article['title']}." for article in articles]
-    # print(formatted_articles)
-
-    account_sid = secrets.SID
-    auth_token = secrets.AUTH
-    client = Client(account_sid, auth_token)
 
     for article in formatted_articles:
-
-        message = client.messages \
-            .create(
-                body=article,
-                from_=TWILIO_PHONE,
-                to=TARGET_PHONE
-            )
-    print(message.status)
+        send_notification(article)
