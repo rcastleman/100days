@@ -1,9 +1,11 @@
 from importlib.metadata import requires
 import requests
+import secrets
+
 
 pixela_endpoint = "https://pixe.la/v1/users"
 
-pixela_parameters = {"token":"8cQz3q5v9L6sZ*4DXUA9XM@i#KD9@e!",
+pixela_parameters = {"token":secrets.PIX_KEY,
 "username":"rcastleman",
 "areeTermsOfService":"yes",
 "notMinor":"yes"}
