@@ -5,9 +5,14 @@ import secrets
 from datetime import datetime
 
 
+#----------------------- variables ------------------------#
+
 USERNAME = "rcastleman"
 TOKEN = secrets.PIX_KEY
 GRAPH_ID = "graph1"
+
+
+#----------------------- set up account ---------------------#
 
 pixela_endpoint = "https://pixe.la/v1/users"
 
@@ -18,6 +23,8 @@ pixela_parameters = {"token":TOKEN,
 
 # response = requests.post(url=pixela_endpoint,json=pixela_parameters)
 # print(response.text)
+
+#----------------------- set up graph ------------------------#
 
 pixela_graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs"
 
@@ -36,18 +43,25 @@ headers = {
 # response = requests.post(url=pixela_graph_endpoint,json=graph_config,headers=headers)
 # print(response.text)
 
+
+#----------------------- post to  graph --------------------------#
+
+
 pixela_post_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}"
 
 today = datetime.now()
 
-print(today.strftime("%Y%m%d"))
+#trying out date formatting to make posting easier
+# print(today.strftime("%Y%m%d"))
 
 post_config = {
     "date":today.strftime("%Y%m%d"),
     "quantity":"1"}
 
-# response = requests.post(
-#     url=pixela_post_endpoint,
-#     json=post_config,
-#     headers=headers)
-# print(response.text)
+response = requests.post(
+    url=pixela_post_endpoint,
+    json=post_config,
+    headers=headers)
+print(response.text)
+
+# graph at https://pixe.la/v1/users/rcastleman/graphs/graph1
