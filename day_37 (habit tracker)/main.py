@@ -58,25 +58,33 @@ post_config = {
     "date":today.strftime("%Y%m%d"),
     "quantity":"1"}
 
-response = requests.post(
-    url=pixela_post_endpoint,
-    json=post_config,
-    headers=headers)
-print(response.text)
+# response = requests.post(
+#     url=pixela_post_endpoint,
+#     json=post_config,
+#     headers=headers)
+# print(response.text)
 
 # graph at https://pixe.la/v1/users/rcastleman/graphs/graph1
 
 
 #------------------------ Put (update) a pixel ------------------ #
 
-date = "2202-09-12"
-quantity = 2
+date = today.strftime('%Y%m%d')
 
 pixela_put_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{date}"
 
-put_config = {"quantity":quantity}
+put_config = {"quantity":"10"}
 
-response = requests.put(
-    url=pixela_put_endpoint,
-    json = put_config,
-    headers = headers)
+# response = requests.put(
+#     url=pixela_put_endpoint,
+#     json = put_config,
+#     headers = headers)
+# print(response.text)
+
+#------------------------ delete a pixel ------------------ #
+
+delete_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{date}"
+
+response = requests.delete(url=delete_endpoint,headers=headers)
+print(response.text)
+
