@@ -65,3 +65,18 @@ response = requests.post(
 print(response.text)
 
 # graph at https://pixe.la/v1/users/rcastleman/graphs/graph1
+
+
+#------------------------ Put (update) a pixel ------------------ #
+
+date = "2202-09-12"
+quantity = 2
+
+pixela_put_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{date}"
+
+put_config = {"quantity":quantity}
+
+response = requests.put(
+    url=pixela_put_endpoint,
+    json = put_config,
+    headers = headers)
