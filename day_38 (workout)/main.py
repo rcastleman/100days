@@ -2,6 +2,9 @@ import requests
 import secrets
 from datetime import date, datetime
 
+# link to Google sheet 
+#https://docs.google.com/spreadsheets/d/10lshz6OBryHn1apsJtU2BVXYkb8hO30nseEjtX_ehXQ/edit#gid=0
+
 GENDER = "male"
 WEIGHT_KG = 66.7
 HEIGHT_CM = 173.0
@@ -34,7 +37,7 @@ print(result)
 
 # To create a new row in your sheet, perform a POST request to the endpoint, with your row contents as a JSON payload in the request body.
 
-headers = {"Authorization": f"Bearer {secrets.TOKEN}"}
+bearer_headers = {"Authorization": f"Bearer {secrets.TOKEN}"}
 
 today_date = datetime.now().strftime("%m/%d/%Y")
 now_time = datetime.now().strftime("%H:%M")
@@ -49,6 +52,6 @@ for exercise in result["exercises"]:
             "calories": exercise["nf_calories"]
         }
     }
-    sheet_response = requests.post(sheet_endpoint, json=sheet_inputs,headers=headers)
+    sheet_response = requests.post(sheet_endpoint, json=sheet_inputs,headers=bearer_headers)
 
     print(sheet_response.text)
