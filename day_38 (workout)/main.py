@@ -1,6 +1,9 @@
 import requests
 import secrets
 from datetime import date, datetime
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # link to Google sheet 
 #https://docs.google.com/spreadsheets/d/10lshz6OBryHn1apsJtU2BVXYkb8hO30nseEjtX_ehXQ/edit#gid=0
