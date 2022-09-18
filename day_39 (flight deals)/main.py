@@ -24,17 +24,20 @@ kiwi_params = {
     "dateTo": return_date,
     }
 
-sheet_data = "[{'city': 'Berlin', 'iataCode': 'BER', 'lowestPrice': 42, 'id': 2}, {'city': 'Cape Town', 'iataCode': 'CPT', 'lowestPrice': 378, 'id': 3}, {'city': 'Istanbul', 'iataCode': 'IST', 'lowestPrice': 95, 'id': 4}, {'city': 'Kuala Lumpur', 'iataCode': 'KUL', 'lowestPrice': 414, 'id': 5}, {'city': 'New York', 'iataCode': 'NYC', 'lowestPrice': 240, 'id': 6}, {'city': 'Paris', 'iataCode': 'PAR', 'lowestPrice': 54, 'id': 7}, {'city': 'San Francisco', 'iataCode': 'SFO', 'lowestPrice': 260, 'id': 8}, {'city': 'Sydney', 'iataCode': 'SYD', 'lowestPrice': 551, 'id': 9}, {'city': 'Tokyo', 'iataCode': 'TYO', 'lowestPrice': 485, 'id': 10}]"
+# old_sheet_data = "[{'city': 'Berlin', 'iataCode': 'BER', 'lowestPrice': 42, 'id': 2}, {'city': 'Cape Town', 'iataCode': 'CPT', 'lowestPrice': 378, 'id': 3}, {'city': 'Istanbul', 'iataCode': 'IST', 'lowestPrice': 95, 'id': 4}, {'city': 'Kuala Lumpur', 'iataCode': 'KUL', 'lowestPrice': 414, 'id': 5}, {'city': 'New York', 'iataCode': 'NYC', 'lowestPrice': 240, 'id': 6}, {'city': 'Paris', 'iataCode': 'PAR', 'lowestPrice': 54, 'id': 7}, {'city': 'San Francisco', 'iataCode': 'SFO', 'lowestPrice': 260, 'id': 8}, {'city': 'Sydney', 'iataCode': 'SYD', 'lowestPrice': 551, 'id': 9}, {'city': 'Tokyo', 'iataCode': 'TYO', 'lowestPrice': 485, 'id': 10}]"
+
+sheet_data = [{'city': 'Berlin', 'iataCode': '', 'lowestPrice': 42, 'id': 2}, {'city': 'Cape Town', 'iataCode': '', 'lowestPrice': 378, 'id': 3}, {'city': 'Istanbul', 'iataCode': '', 'lowestPrice': 95, 'id': 4}, {'city': 'Kuala Lumpur', 'iataCode': '', 'lowestPrice': 414, 'id': 5}, {'city': 'New York', 'iataCode': '', 'lowestPrice': 240, 'id': 6}, {'city': 'Paris', 'iataCode': '', 'lowestPrice': 54, 'id': 7}, {'city': 'San Francisco', 'iataCode': '', 'lowestPrice': 260, 'id': 8}, {'city': 'Sydney', 'iataCode': '', 'lowestPrice': 551, 'id': 9}, {'city': 'Tokyo', 'iataCode': '', 'lowestPrice': 485, 'id': 10}]
 
 
 #--------------------- SHEETLY API CALL ----------------------#
 
 sheet_endpoint = "https://api.sheety.co/d1adb73803921977f6bd07bf9871e281/flightDealsRc/prices"
 
+# response = requests.get(sheet_endpoint)
+# response.raise_for_status()
+# data = response.json()
+# sheet_data = data["prices"]
+# print(sheet_data)
 
-response = requests.get(sheet_endpoint)
-response.raise_for_status()
-data = response.json()
-# print(data)
-# pprint(data)
-
+# with open('sheet_data', 'w') as f:
+#     f.write(str(sheet_data))
