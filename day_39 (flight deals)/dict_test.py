@@ -7,11 +7,7 @@ test_dict = {
     "key4":"value4"
 }
 
-# for key, value in test_dict.items():
-#     if value == "":
-#         print(f"{key} has a null value")
+output = {k:"TESTING" for k,v in test_dict.items() if v==""}
 
-test_dict = {k:"TESTING" for k,v in test_dict.items() if v==""}
-
-print(test_dict)
+print(output)
 
