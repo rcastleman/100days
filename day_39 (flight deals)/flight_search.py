@@ -1,5 +1,3 @@
-from codecs import code_page_decode
-from unittest import result
 import os
 from dotenv import load_dotenv
 load_dotenv()
