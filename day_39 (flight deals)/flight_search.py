@@ -1,9 +1,12 @@
+from codecs import code_page_decode
 from unittest import result
 
 
 class FlightSearch:
-    #This class is responsible for talking to the Flight Search API.
-    pass
+
+    def get_destination_code(self,city_name):
+        code = "TESTING"
+        return code
 
 
 KIWI_ENDPOINT = "https://api.tequila.kiwi.com/v2/search"
