@@ -21,7 +21,7 @@ class DataManager:
                 }
             }
             response = requests.put(
-                url=f"{SHEETY_PRICES_ENDPOINT}/{city['id']}",
+                url=f"{sheety_endpoint}/{city['id']}",
                 json=new_data
             )
             print(response.text)
