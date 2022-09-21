@@ -1,4 +1,6 @@
+import code
 import os
+import requests
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -9,7 +11,8 @@ KIWI_API_KEY = os.environ.get("KIWI_API_KEY")
 class FlightSearch:
 
     def get_destination_code(self,city_name):
-        code = "TESTING"
+        response = requests.get(KIWI_ENDPOINT)
+        code = response.json()
         return code
 
 # from_city = "LGA"
