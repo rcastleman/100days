@@ -1,11 +1,13 @@
 from datetime import *
 from data_manager import DataManager
 from flight_search import FlightSearch
-import notification_manager
+from notification_manager import NotificationManager
 
 data_manager = DataManager()
-sheet_data = data_manager.get_destination_data()
 flight_search = FlightSearch()
+notification_manager = NotificationManager()
+
+sheet_data = data_manager.get_destination_data()
 
 origin_city = "LON"
 
