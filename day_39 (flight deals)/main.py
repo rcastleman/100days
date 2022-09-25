@@ -24,4 +24,3 @@ for destination in sheet_data():
         from_time = start_trip,
         to_time = end_trip
     )
-
