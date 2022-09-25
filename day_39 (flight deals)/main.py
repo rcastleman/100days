@@ -1,7 +1,13 @@
 from datetime import *
 from data_manager import DataManager
+from flight_search import FlightSearch
+
 data_manager = DataManager()
 sheet_data = data_manager.get_destination_data()
+
+flight_search = FlightSearch()
+
+origin_city = "LON"
 
 if sheet_data[0]["iataCode"] == "":
     from flight_search import FlightSearch
@@ -13,7 +19,6 @@ if sheet_data[0]["iataCode"] == "":
     data_manager.destination_data = sheet_data
     data_manager.update_destination_codes()
 
-origin_city = "LON"
 start_trip = date.today() + timedelta(days=1)
 end_trip = start_trip + timedelta(days = 180)
 
