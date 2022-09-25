@@ -23,7 +23,8 @@ class FlightSearch:
     def get_flights(self):
 
         # list = get list of cities from google doc
-        get_destination_data(self)
+        list = self.get_destination_data(self)
+        
         for target in list:
             location_endpoint = f"{KIWI_ENDPOINT}/locations/query"
             headers = {"apikey": KIWI_API_KEY}
