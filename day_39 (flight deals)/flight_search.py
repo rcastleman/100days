@@ -1,6 +1,6 @@
-import os
 from datetime import *
 import requests
+import os
 from dotenv import load_dotenv
 
 from flight_data import FlightData
