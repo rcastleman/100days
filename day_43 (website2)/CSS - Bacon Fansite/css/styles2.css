@@ -2,6 +2,18 @@ h1 {
     color: red;
     font-size: 20px;
 }
-img{
+/* img{
     background-color: rgba(131, 28, 130, 0.404);
+} */
+
+.bacon{
+    background-color: green;
+}
+
+.broccoli{
+    background-color: red;
+}
+
+img:hover {
+    background-color: gold;
 }
