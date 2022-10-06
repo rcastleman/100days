@@ -1,3 +1,7 @@
-body{
-    background-color: red;
+h1 {
+    color: red;
+    font-size: 20px;
+}
+img{
+    background-color: rgba(131, 28, 130, 0.404);
 }
