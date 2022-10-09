@@ -1,5 +1,9 @@
 body{
     background-color: white;
+    margin:0;
+}
+h1{
+    margin-top: 0;
 }
 div{
     background-color: #B1B2FF;
