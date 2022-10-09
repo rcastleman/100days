@@ -14,10 +14,10 @@ h1 {
     /* background-color: yellow; */
     /* width: 160px; */
     /* height: 160px; */
-    padding: 20px;
+    padding-top: 100px;
     /* border: solid 10px; */
     /* margin: 0px; */
-    /* position: absolute; */
+    position: relative;
     /* left: 0px; */
 }
 .middle-container{
@@ -36,8 +36,9 @@ h1 {
 }
 
 .top-cloud {
-    position: relative;
-    margin-right: -350px;
+    position: absolute;
+    right: 300px;
+    top: 50px;
 }
 
 .bottom-cloud {
