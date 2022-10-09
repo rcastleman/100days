@@ -8,16 +8,23 @@ body{
     height: 100px;
     position: absolute;
     left: 200px;
+    top:200px;
 }
 
 .blue{
     background-color: blue;
     width: 100px;
     height: 100px;
+    position:absolute;
+    left:100px;
+    top: 100px;
 }
 
 .yellow{
     background-color: yellow;
     width: 100px;
     height: 100px;
+    position:absolute;
+    left:0px;
+    top:0px;
 }
