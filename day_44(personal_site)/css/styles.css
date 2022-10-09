@@ -8,3 +8,17 @@ h1{
 div{
     background-color: #B1B2FF;
 }
+.top-container{
+    background-color: #E4F9F5;
+    padding: 10px;
+}
+.middle-container{
+    background-color: red;
+    width: 200px;
+    height: 200px;
+}
+.bottom-container{
+    background-color: blue;
+    width: 200px;
+    height: 200px;
+}
