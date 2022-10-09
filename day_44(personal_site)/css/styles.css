@@ -40,3 +40,8 @@ h3 {
     bottom: 300px;
     left: 300px;
 }
+
+.photo {
+    width: 15%;
+    height: inherit;
+}
