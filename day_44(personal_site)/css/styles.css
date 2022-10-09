@@ -2,31 +2,26 @@ body{
     background-color: white;
     margin:0;
 }
-h1{
-    margin-top: 0;
-}
-div{
-    background-color: #B1B2FF;
-}
+
 .top-container{
-    background-color: yellow;
+    /* background-color: yellow; */
     width: 160px;
     height: 160px;
     padding: 20px;
     /* border: solid 10px; */
     margin: 0px;
     position: absolute;
-    left: 200px;
+    left: 0px;
 }
 .middle-container{
-    background-color: red;
+    /* background-color: red; */
     width: 200px;
     height: 200px;
     /* border: solid 20px; */
     /* margin-left: 260px; */
 }
 .bottom-container{
-    background-color: blue;
+    /* background-color: blue; */
     width: 200px;
     height: 200px;
     /* border: solid 10px; */

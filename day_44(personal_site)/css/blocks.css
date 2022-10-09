@@ -24,7 +24,7 @@ body{
     background-color: yellow;
     width: 100px;
     height: 100px;
-    position:absolute;
+    position:fixed;
     left:0px;
     top:0px;
 }
