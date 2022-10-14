@@ -6,6 +6,17 @@ body{
     font-family: 'Merriweather', serif;
 }
 
+a {
+    color: #11999E;
+    font-family: 'Montserrat', sans-serif;
+    margin: 10px 20px;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #EAF6F6;
+}
+
 h1 {
     color: #66BFBF;
     font-family: 'Sacramento', cursive;
@@ -51,6 +62,11 @@ hr {
     padding: 50px 0 20px;
 }
 
+.copyright {
+    color:#EAF6F6;
+    font-size: 0.75rem;
+    padding: 20px 0;
+}
 .top-cloud {
     position: absolute;
     right: 300px;
