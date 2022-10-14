@@ -1,5 +1,6 @@
 body{
     background-color: #E4F9F5;
+    color: #40514E;
     margin:0;
     text-align: center;
     font-family: 'Merriweather', serif;
@@ -20,7 +21,8 @@ h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 2.5rem;
     font-weight: normal;
-    color: #66BFBF; 
+    color: #66BFBF;
+    ;padding-bottom: 10px; 
 }
 
 h3 {
@@ -63,8 +65,12 @@ h3 {
 
 .computer-img {
     width: 25%;
+    float: left;
+    padding-right: 20px;
 }
 
 .chili-img {
     width: 25%;
+    float: right;
+    padding-left: 20px;
 }
