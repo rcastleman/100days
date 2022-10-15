@@ -24,4 +24,4 @@ all_anchor_tags = soup.find_all(name="a")
 # print(heading)
 
 section_heading = soup.find(class_ = "heading")
-print(section_heading)
+print(section_heading.name)
