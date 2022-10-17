@@ -11,5 +11,6 @@ yc_web_page = response.text
 soup = BeautifulSoup(yc_web_page,PARSER)
 heading = soup.find(name="h1", id="name")
 article_tag = soup.find(name="a")
+print(soup.title)
 # print(soup.prettify())
-print(article_tag)
+# print(article_tag)
