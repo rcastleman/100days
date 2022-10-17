@@ -16,17 +16,16 @@ article_texts = []
 article_links = []
 
 for article_tag in articles:
+    text = article_tag.getText()
+    article_texts.append(text)
+    link = article_tag.a.get("href")
+    article_links.append(link)
 
-    article_text = article_tag.getText()
-    article_texts.append(article_text)
-    
-    article_link = article_tag.a.get("href")
-    article_links.append(article_link)
-
-article_upvote = soup.find_all(name="span",class_="score").getText()
+# article_upvotes = soup.find_all(name="span",class_="score").getText()
+article_upvotes = [int(score.getText().split()[0]) for score in soup.find_all(name="span",class_="score")]
 # print(soup.title)
 # print(soup.prettify())
 # print(article_tag)
-print(article_text)
-print(article_link)
-print(article_upvote)
+print(article_texts)
+print(article_links)
+print(article_upvotes)
