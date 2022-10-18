@@ -11,8 +11,6 @@ response = requests.get(URL)
 
 soup = BeautifulSoup(response.text,"html.parser")
 
-# all_songs = soup.find_all("span", class_="chart-element__information__song")
-
 all_songs = soup.find_all(name="h3",class_="a-no-trucate", id="title-of-a-story")
 
 titles = [song.getText().strip("\n\t") for song in all_songs]
