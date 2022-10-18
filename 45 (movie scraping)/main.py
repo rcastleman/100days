@@ -11,5 +11,10 @@ website_html = response.text
 
 soup = BeautifulSoup(website_html,"html.parser")
 
-print(soup.prettify())
+# print(soup.prettify())
 
+all_movies = soup.find_all(name = "h3", class_ = "title")
+# print(all_movies)
+
+movie_titles = [movie.getText() for movie in all_movies]
+print(movie_titles[::-1])
