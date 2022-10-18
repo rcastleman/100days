@@ -3,25 +3,22 @@ from bs4 import BeautifulSoup
 
 
 
-# user_date = input("Year? (YEAR-MO-DATE): ")
+user_date = input("Year? (YEAR-MO-DATE): ")
 
-# URL = f"https://www.billboard.com/charts/hot-100/{user_date}"
+URL = f"https://www.billboard.com/charts/hot-100/{user_date}"
 
-# print(URL)
+response = requests.get(URL)
 
-# response = requests.get(URL)
-response = requests.get("https://www.billboard.com/charts/hot-100/2000-08-12/")
-website_html = response.text
-soup = BeautifulSoup(website_html,"html.parser")
+soup = BeautifulSoup(response.text,"html.parser")
 
-print(soup.prettify())
+# all_songs = soup.find_all("span", class_="chart-element__information__song")
 
-all_songs = soup.find_all(name="h3",class_="c-title  a-no-trucate a-font-primary-bold-s u-letter-spacing-0021 lrv-u-font-size-18@tablet lrv-u-font-size-16 u-line-height-125 u-line-height-normal@mobile-max a-truncate-ellipsis u-max-width-330 u-max-width-230@tablet-only")
+all_songs = soup.find_all(name="h3",class_="a-no-trucate", id="title-of-a-story")
 
-titles = [song.getText() for song in all_songs]
+titles = [song.getText().strip("\n\t") for song in all_songs]
 
-# print(titles)
+with open("songs.txt",mode="w") as file:
+    for song in titles:
+        file.write(f"{song}\n")
 
-# with open("songs.txt",mode="w") as file:
-#     for song in titles:
-#         file.write(f"{song}\n")
+print(titles)
