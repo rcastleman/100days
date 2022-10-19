@@ -2,6 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 #----- GET TITLES -------- #
 
@@ -17,9 +21,13 @@ titles = [title.getText().strip() for title in all_titles]
 
 #---------- SPOTIFY ------------ #
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="CLIENT_ID",
-                                               client_secret="SECRET",
-                                               redirect_uri="REDIRECT",
+CLIENT_ID = os.environ.get("CLIENT_ID")
+SECRET = os.environ.get("SECRET")
+REDIRECT = os.environ.get("REDIRECT")
+
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
+                                               client_secret=SECRET,
+                                               redirect_uri=REDIRECT,
                                                scope="playlist-modify-private",
                                              ))
                                             
