@@ -26,5 +26,4 @@ with open("songs.txt",mode="w") as file:
     for song in titles:
         file.write(f"{song}\n")
 
-# print(titles)
-
+print(titles)
