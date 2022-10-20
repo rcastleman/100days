@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import lxml
+
 
 URL = "https://www.amazon.com/Instant-Pot-Duo-Evo-Plus/dp/B07W55DDFB/ref=sr_1_1?qid=1597662463"
 
@@ -12,4 +14,8 @@ HEADERS = {
     Accept_Language}
 
 response = requests.get(URL,headers = HEADERS)
+site_text = response.text
 
+soup = BeautifulSoup(site_text,"lmxl")
+
+print(soup)
