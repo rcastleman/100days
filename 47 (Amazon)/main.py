@@ -10,13 +10,15 @@ User_Agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
 Accept_Language = "en-US,en;q=0.9,fr;q=0.8"
 
 HEADERS = {
-    User_Agent,
-    Accept_Language}
+    "User-Agent":User_Agent,
+    "Accept-Language": Accept_Language}
+
+# print(HEADERS)
 
 response = requests.get(URL,headers = HEADERS)
 site_text = response.text
 
 soup = BeautifulSoup(site_text,"lmxl")
 
-# print(soup)
-print(site_text)
+title = soup.find(id="productTitle").get_text().strip()
+print(title)
