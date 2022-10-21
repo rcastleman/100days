@@ -1,3 +1,4 @@
+import site
 import requests
 from bs4 import BeautifulSoup
 import lxml
@@ -18,7 +19,9 @@ HEADERS = {
 response = requests.get(URL,headers = HEADERS)
 site_text = response.text
 
-soup = BeautifulSoup(site_text,"lmxl")
+print(site_text)
 
-title = soup.find(id="productTitle").get_text().strip()
-print(title)
+# soup = BeautifulSoup(site_text,"lmxl")
+
+# title = soup.find(id="productTitle").get_text().strip()
+# print(title)
