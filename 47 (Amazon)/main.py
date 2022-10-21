@@ -18,4 +18,5 @@ site_text = response.text
 
 soup = BeautifulSoup(site_text,"lmxl")
 
-print(soup)
+# print(soup)
+print(site_text)
