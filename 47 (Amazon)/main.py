@@ -19,9 +19,12 @@ HEADERS = {
 response = requests.get(URL,headers = HEADERS)
 site_text = response.text
 
-print(site_text)
+# print(site_text)
 
-# soup = BeautifulSoup(site_text,"lmxl")
+# PARSER = "html.parser"
+PARSER = "lxml"
 
-# title = soup.find(id="productTitle").get_text().strip()
-# print(title)
+soup = BeautifulSoup(site_text,PARSER)
+
+title = soup.find(id="productTitle").get_text().strip()
+print(title)
