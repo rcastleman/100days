@@ -4,7 +4,8 @@ from bs4 import BeautifulSoup
 import lxml
 
 
-URL = "https://www.amazon.com/Instant-Pot-Duo-Evo-Plus/dp/B07W55DDFB/ref=sr_1_1?qid=1597662463"
+# URL = "https://www.amazon.com/Instant-Pot-Duo-Evo-Plus/dp/B07W55DDFB/ref=sr_1_1?qid=1597662463"
+URL = "https://www.amazon.com/Instant-Pot-6Qt-Plus-WiFi/dp/B08TMTJZ8L?ref_=ast_sto_dp"
 
 User_Agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"
 
@@ -27,6 +28,6 @@ PARSER = "lxml"
 soup = BeautifulSoup(site_text,PARSER)
 
 title = soup.find(id="productTitle").get_text().strip()
-# print(title)
+print(title)
 
-price = soup.find()
+# price = soup.find()
