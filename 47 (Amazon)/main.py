@@ -28,6 +28,8 @@ PARSER = "lxml"
 soup = BeautifulSoup(site_text,PARSER)
 
 title = soup.find(id="productTitle").get_text().strip()
-print(title)
+# print(title)
 
-# price = soup.find()
+price = soup.find(name="span", class_="a-price-decimal")
+
+print(price)
