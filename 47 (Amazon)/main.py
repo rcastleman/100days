@@ -40,8 +40,7 @@ today_price = float(price.strip('$'))
 
 target_price = 200
 
-body = f"Subject:Price alert!\n\nThe current price is {price}, which is under your target price of {target_price}."
+body = f"Subject:Price alert!\n\nThe current price is {price}, which is under your target price of ${target_price}."
 
-if price < target_price:
+if today_price < target_price:
     send_email(body)
-
