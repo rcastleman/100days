@@ -30,6 +30,6 @@ soup = BeautifulSoup(site_text,PARSER)
 title = soup.find(id="productTitle").get_text().strip()
 # print(title)
 
-price = soup.find(name="span", class_="a-price-decimal")
+price = soup.find(name="span", class_="a-offscreen")
 
 print(price)
