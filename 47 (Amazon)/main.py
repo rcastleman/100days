@@ -30,6 +30,12 @@ soup = BeautifulSoup(site_text,PARSER)
 title = soup.find(id="productTitle").get_text().strip()
 # print(title)
 
-price = soup.find(name="span", class_="a-offscreen")
-
+# price = soup.find(id="attach-base-product-price").get_text()
+# price = soup.find(id="priceblock_ourprice").get_text()
+# price_without_currency = price.split("$")[1]
+# price_as_float = float(price_without_currency)
+# print(price_as_float)
+# print(price)
+data = soup.find(name="span", class_="a-offscreen")
+price = data.text
 print(price)
