@@ -9,3 +9,5 @@ from selenium.webdriver.chrome.service import Service
 s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
 driver = webdriver.Chrome(service = s)
 driver.get("https://amazon.com")
+# driver.close() #closes a tab
+driver.quit() #closes the entire browser
