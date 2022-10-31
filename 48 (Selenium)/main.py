@@ -14,5 +14,7 @@ URL = "https://www.amazon.com/Instant-Pot-6Qt-Plus-WiFi/dp/B08TMTJZ8L?ref_=ast_s
 s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
 driver = webdriver.Chrome(service = s)
 driver.get(URL)
+price = driver.find_element_by_class_name("a-offscreen")
+print(price.text)
 # driver.close() #closes a tab
 driver.quit() #closes the entire browser
