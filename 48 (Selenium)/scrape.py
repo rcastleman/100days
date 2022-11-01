@@ -25,6 +25,7 @@ for item in driver.find_elements(By.XPATH,x_path):
     event = item.find_element(By.CSS_SELECTOR,'a').text
     events.append({'date': date, 'event name': event})
 
+
 print(events)
 driver.quit() #closes the entire browser
 
