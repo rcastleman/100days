@@ -1,4 +1,5 @@
 from cgitb import text
+from typing import Iterable
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -14,9 +15,16 @@ selector = "#corePriceDisplay_desktop_feature_div > div.a-section.a-spacing-none
 s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
 driver = webdriver.Chrome(service = s)
 driver.get(URL)
-# price = driver.find_element(By.CLASS_NAME,class_name)
-price = driver.find_element(By.XPATH,x_path)
-# price = driver.find_element(By.CSS_SELECTOR,selector)
-print(price.text)
-# driver.close() #closes a tab
+# events = driver.find_elements(By.CLASS_NAME,class_name)
+events = driver.find_elements(By.XPATH,x_path)
+# events = driver.find_elements(By.CSS_SELECTOR,selector)
+print(events.text)
 driver.quit() #closes the entire browser
+
+#-------------- BUILD DICTIONARY ---------------#
+
+# {key: value for (key, value) in iterable}
+
+
+
+event_dict = {k:v for (k,v) in iterable}
