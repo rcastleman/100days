@@ -20,6 +20,15 @@ driver.get(URL)
 # events = driver.find_elements(By.XPATH,x_path)
 dates = driver.find_elements(By.CSS_SELECTOR,date_selector)
 names = driver.find_elements(By.CSS_SELECTOR,name_selector)
+events = {}
+
+for n in range(0,len(dates)):
+    events[n] = {
+        "time":dates[n].text,
+        "name":names[n].text,
+    }
+
+print(events)
 
 # events = []
 # for item in driver.find_elements(By.XPATH,x_path):
@@ -27,12 +36,7 @@ names = driver.find_elements(By.CSS_SELECTOR,name_selector)
 #     event = item.find_element(By.CSS_SELECTOR,'a').text
 #     events.append({'date': date, 'event name': event})
 
-for item in names:
-    print(item.text)
+# for item in names:
+#     print(item.text)
 driver.quit() #closes the entire browser
 
-#-------------- BUILD DICTIONARY ---------------#
-
-# {key: value for (key, value) in iterable}
-
-# event_dict = {k:v for (k,v) in iterable}
