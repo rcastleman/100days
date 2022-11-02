@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common import keys
+
 
 URL = "https://en.wikipedia.org/wiki/Main_Page"
 
@@ -15,8 +17,10 @@ driver.get(URL)
 article_count = driver.find_element(By.CSS_SELECTOR,css_selector)
 # article_count.click()
 all_portals = driver.find_element(By.LINK_TEXT,"Content portals")
-all_portals.click()
+# all_portals.click()
 search = driver.find_element(By.NAME,"search")
 search.send_keys("Python")
+search.send_keys(Keys.ENTER)
+
 # print(article_count.text)
 # driver.quit()
