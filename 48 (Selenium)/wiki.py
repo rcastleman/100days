@@ -5,11 +5,13 @@ from selenium.webdriver.common.by import By
 URL = "https://en.wikipedia.org/wiki/Main_Page"
 
 x_path = '//*[@id="articlecount"]/a[1]'
+
+css_selector = '#articlecount a'
  
 s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
 driver = webdriver.Chrome(service = s)
 driver.get(URL)
 # events = driver.find_elements(By.CLASS_NAME,class_name)
-stat = driver.find_elements(By.XPATH,x_path)
+article_count = driver.find_elements(By.CSS_SELECTOR,css_selector).text
 
-print(stat.text)
+print(article_count)
