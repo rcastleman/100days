@@ -12,6 +12,6 @@ s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chrom
 driver = webdriver.Chrome(service = s)
 driver.get(URL)
 # events = driver.find_elements(By.CLASS_NAME,class_name)
-article_count = driver.find_elements(By.CSS_SELECTOR,css_selector).text
+article_count = driver.find_element(By.CSS_SELECTOR,css_selector)
 
-print(article_count)
+print(article_count.text)
