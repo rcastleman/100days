@@ -12,6 +12,10 @@ driver.get(URL)
 
 cookie = driver.find_element_by_id("cookie")
 
+
+items = driver.find_elements_by_css_selector("#store div")
+item_ids = [item.get_attribute("id") for item in items]
+
 button.click()
 
 driver.quit()
