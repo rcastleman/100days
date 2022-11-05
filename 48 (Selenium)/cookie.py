@@ -10,13 +10,13 @@ s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chrom
 driver = webdriver.Chrome(service = s)
 driver.get(URL)
 
-cookie = driver.find_element_by_id("cookie")
+cookie = driver.find_element(By.ID,"cookie")
 
-items = driver.find_elements_by_css_selector("#store div")
+items = driver.find_elements(By.CSS_SELECTOR,"#store div")
 item_ids = [item.get_attribute("id") for item in items]
 
 timeout = time.time() + 5
-five_min = time.time() + 60*5 # 5minutes
+TIMER = time.time() + 60*1 
 
 while True:
     cookie.click()
@@ -25,8 +25,8 @@ while True:
     # if time.time() > timeout:
 
     #After 5 minutes stop the bot and check the cookies per second count.
-    if time.time() > five_min:
-        cookie_per_s = driver.find_element_by_id("cps").text
+    if time.time() > TIMER:
+        cookie_per_s = driver.find_element(By.ID,"cps").text
         print(cookie_per_s)
         break
 
