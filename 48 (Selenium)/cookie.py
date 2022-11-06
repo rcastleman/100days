@@ -23,7 +23,16 @@ while True:
     cookie.click()
 
     #Every 5 seconds:
-    # if time.time() > timeout:
+    if time.time() > timeout:
+
+        all_prices = driver.find_elements(By.CSS_SELECTOR,'#storeb')
+        item_prices = []
+
+        for price in all_prices:
+            element_text = price.text
+            if element_text != "":
+                cost = element_text.split('-').strip().replace(',','')
+                item_prices.append(cost)
 
     #After 5 minutes stop the bot and check the cookies per second count.
     if time.time() > TIMER:
