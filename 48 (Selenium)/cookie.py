@@ -12,6 +12,8 @@ cookie_ID = 'cookie'
 CPS_ID = 'cps' # for orteil
 # CPS_ID = "cookieCps" #for domdom
 
+store_ID = 'store'
+
 
 s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
 driver = webdriver.Chrome(service = s)
@@ -19,8 +21,8 @@ driver.get(URL)
 
 cookie = driver.find_element(By.ID,cookie_ID)
 
-# items = driver.find_elements(By.CSS_SELECTOR,"store")
-# item_ids = [item.get_attribute("id") for item in items]
+items = driver.find_elements(By.CSS_SELECTOR,store_ID)
+item_ids = [item.get_attribute("id") for item in items]
 
 duration = 0.25
 timeout = time.time() + 5
@@ -33,7 +35,7 @@ while True:
     if time.time() > timeout:
 
     #Get all upgrade <b> tags
-        all_prices = driver.find_elements_by_css_selector("#store b")
+        all_prices = driver.find_elements(By.CSS_SELECTOR,store_ID)
         item_prices = []
 
         #Convert <b> text into an integer price.
@@ -49,7 +51,7 @@ while True:
             cookie_upgrades[item_prices[n]] = item_ids[n]
 
         #Get current cookie count
-        money_element = driver.find_element_by_id("money").text
+        money_element = driver.find_element(By.ID,"money").text
         if "," in money_element:
             money_element = money_element.replace(",", "")
         cookie_count = int(money_element)
@@ -65,11 +67,11 @@ while True:
         print(highest_price_affordable_upgrade)
         to_purchase_id = affordable_upgrades[highest_price_affordable_upgrade]
 
-        driver.find_element_by_id(to_purchase_id).click()
+        driver.find_element(By.ID,to_purchase_id).click()
         
         #Add another 5 seconds until the next check
         timeout = time.time() + 5
-        
+
     #After 5 minutes stop the bot and check the cookies per second count.
     if time.time() > TIMER:
         cookie_per_s = float(driver.find_element(By.ID,CPS_ID).text)
