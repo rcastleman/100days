@@ -12,7 +12,12 @@ s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chrom
 driver = webdriver.Chrome(service = s)
 driver.get(URL)
 
+cookie_ID = 'cookie'
 cookie = driver.find_element(By.ID,cookie_ID)
+
+duration = 1    
+timeout = time.time() + 5
+TIMER = time.time() + 60 * duration
 
 while True:
     cookie.click()
@@ -24,7 +29,7 @@ while True:
                 buyable.append(item)
         buyable[-1].click()
         timeout = time.time() + 5
-    if time.time() > five_min:
+    if time.time() > TIMER:
         cookie_per_s = driver.find_element(By.ID, value="cps").text
         print(cookie_per_s)
         break
