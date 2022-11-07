@@ -6,12 +6,28 @@ import time
 
 URL = 'https://www.linkedin.com/jobs/search/?currentJobId=3344172382&f_AL=true&f_C=21836&f_E=1&f_WT=2&geoId=103644278&keywords=python%20developer&location=United%20States&refresh=true&sortBy=R'
 
-x_path = '/html/body/div[1]/header/nav/div/a[2]'
+sign_in_URL = 'https://www.linkedin.com/login?emailAddress=&fromSignIn=&fromSignIn=true&session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fjobs%2Fsearch%2F%3FcurrentJobId%3D3344172382%26f_AL%3Dtrue%26f_C%3D21836%26f_E%3D1%26f_WT%3D2%26geoId%3D103644278%26keywords%3Dpython%2520developer%26location%3DUnited%2520States%26refresh%3Dtrue%26sortBy%3DR&trk=public_jobs_nav-header-signin'
 
-s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
-driver = webdriver.Chrome(service = s)
-driver.get(URL)
+sign_in_1_x_path = '/html/body/div[1]/header/nav/div/a[2]'
+sign_in_2_x_path = ''
 
-sign_in = driver.find_element(By.XPATH,x_path)
 
-sign_in.click()
+from dotenv import load_dotenv
+load_dotenv()
+import os
+
+user_id= os.environ.get("USER_ID")
+print(user_id)
+
+#----- open initial pages ------#
+
+# s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
+# driver = webdriver.Chrome(service = s)
+# driver.get(URL)
+
+# sign_in = driver.find_element(By.XPATH,sign_in_1_x_path)
+# sign_in.click()
+
+# #---------sign in ---------- #
+
+# driver.find_elementby
