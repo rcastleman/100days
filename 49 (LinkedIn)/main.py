@@ -45,7 +45,11 @@ sign_in_2_button.click()
 
 #---------- store jobs --------------------- #
 
-all_listings = driver.find_elements_by_css_selector(".job-card-container--clickable")
+follow_button = driver.find_element(By.XPATH,'//*[@id="ember354"]/section/div[1]/div[1]/button/span')
 
-with open("jobs.txt",mode='w') as file:
+all_listings = driver.find_elements(By.CSS_SELECTOR,".job-card-container--clickable")
+
+with open("jobs_list.txt",mode='w') as file:
     file.write(all_listings)
+
+follow_button.click()
