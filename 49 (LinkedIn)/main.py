@@ -3,6 +3,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 URL = 'https://www.linkedin.com/jobs/search/?currentJobId=3344172382&f_AL=true&f_C=21836&f_E=1&f_WT=2&geoId=103644278&keywords=python%20developer&location=United%20States&refresh=true&sortBy=R'
 
@@ -14,10 +18,6 @@ password_x_path = '//*[@id="password"]'
 sign_in_2_button_x_path = '//*[@id="organic-div"]/form/div[3]/button'
 
 
-from dotenv import load_dotenv
-load_dotenv()
-import os
-
 user_id= os.environ.get("USER_ID")
 password = os.environ.get("PASS")
 
@@ -27,10 +27,12 @@ s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chrom
 driver = webdriver.Chrome(service = s)
 driver.get(URL)
 
+#----- click on Sign In ------#
+
 sign_in = driver.find_element(By.XPATH,sign_in_1_x_path)
 sign_in.click()
 
-# #---------sign in ---------- #
+# #---------enter login credentials on sign in page ---------- #
 
 sign_in_2 = driver.find_element(By.XPATH,sign_in_2_x_path)
 sign_in_2.send_keys(user_id)
@@ -40,3 +42,10 @@ pass_entry.send_keys(password)
 
 sign_in_2_button = driver.find_element(By.XPATH,sign_in_2_button_x_path)
 sign_in_2_button.click()
+
+#---------- store jobs --------------------- #
+
+all_listings = driver.find_elements_by_css_selector(".job-card-container--clickable")
+
+with open("jobs.txt",mode='w') as file:
+    file.write(all_listings)
