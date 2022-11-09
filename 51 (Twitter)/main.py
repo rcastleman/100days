@@ -17,5 +17,13 @@ TWITTER_PASS = os.environ.get("PASS")
 URL = 'https://twitter.com/home'
 
 svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
-driver = webdriver.Chrome(service = svce)
+# driver = webdriver.Chrome(service = svce)
 driver.get(URL)
+
+class InternetSpeedTwitterBot:
+    def __init__(self):
+        self.driver = webdriver.Chrome(service = svce)
+        self.up = 
+        self.down = 
+
+bot = InternetSpeedTwitterBot()
