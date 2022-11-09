@@ -7,3 +7,15 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
+
+PROMISED_DOWN = 1000
+PROMISED_UP = 250
+
+TWITTER_ID = os.environ.get("USER")
+TWITTER_PASS = os.environ.get("PASS")
+
+URL = 'https://twitter.com/home'
+
+s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
+driver = webdriver.Chrome(service = s)
+driver.get(URL)
