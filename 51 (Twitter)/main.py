@@ -16,6 +16,6 @@ TWITTER_PASS = os.environ.get("PASS")
 
 URL = 'https://twitter.com/home'
 
-s = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
-driver = webdriver.Chrome(service = s)
+svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
+driver = webdriver.Chrome(service = svce)
 driver.get(URL)
