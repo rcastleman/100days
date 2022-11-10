@@ -30,9 +30,13 @@ class InternetSpeedTwitterBot:
         self.up = 0
         self.down = 0
 
-    def getSpeeds():
-        
+    def getDown():
+        self.down = driver.find_element(By.XPATH,'//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[1]/div/div[2]/span')
+    
+
 
 bot = InternetSpeedTwitterBot()
+
+print(bot.getDown)
 
 
