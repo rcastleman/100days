@@ -30,6 +30,9 @@ class InternetSpeedTwitterBot:
         self.up = 0
         self.down = 0
 
+    def getSpeeds():
+        
+
 bot = InternetSpeedTwitterBot()
 
 
