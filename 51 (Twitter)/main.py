@@ -21,8 +21,8 @@ speed_down = '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/d
 
 
 svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
-# driver = webdriver.Chrome(service = svce)
-# driver.get(URL)
+speed_driver = webdriver.Chrome(service = svce)
+speed_driver.get(SPEEDTEST_URL)
 
 class InternetSpeedTwitterBot:
     def __init__(self):
@@ -30,7 +30,13 @@ class InternetSpeedTwitterBot:
         self.up = 0
         self.down = 0
 
-    def getDown():
+    def get_internet_speed():
         self.down = driver.find_element(By.XPATH,'//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[1]/div/div[2]/span')
     
+    def tweet_at_provider():
+        pass
+
+
 bot = InternetSpeedTwitterBot()
+
+bot.get_internet_speed()
