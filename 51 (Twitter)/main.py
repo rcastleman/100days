@@ -1,10 +1,10 @@
+import os
+import time
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import time
-from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
@@ -13,16 +13,12 @@ PROMISED_UP = 250
 
 TWITTER_ID = os.environ.get("USER")
 TWITTER_PASS = os.environ.get("PASS")
-
 TWITTER_URL = 'https://twitter.com/home'
 
 SPEEDTEST_URL = 'https://www.speedtest.net/'
-speed_down = '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[1]/div/div[2]/span'
-
+speed_down = '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[1]/a/span[4]'
 
 svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
-speed_driver = webdriver.Chrome(service = svce)
-speed_driver.get(SPEEDTEST_URL)
 
 class InternetSpeedTwitterBot:
     def __init__(self):
@@ -31,12 +27,12 @@ class InternetSpeedTwitterBot:
         self.down = 0
 
     def get_internet_speed():
-        self.down = driver.find_element(By.XPATH,'//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[1]/div/div[2]/span')
+        driver = webdriver.Chrome(service = svce)
+        driver.get(SPEEDTEST_URL)
+        driver.find_element(By.XPATH,speed_down).click()
     
     def tweet_at_provider():
         pass
 
-
 bot = InternetSpeedTwitterBot()
-
 bot.get_internet_speed()
