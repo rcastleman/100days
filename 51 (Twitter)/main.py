@@ -18,7 +18,6 @@ TWITTER_URL = 'https://twitter.com/home'
 SPEEDTEST_URL = 'https://www.speedtest.net/'
 speed_down = '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[1]/a/span[4]'
 
-
 svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
 
 class InternetSpeedTwitterBot:
@@ -31,6 +30,9 @@ class InternetSpeedTwitterBot:
         self.driver.get(SPEEDTEST_URL)
         button = self.driver.find_element(By.XPATH,speed_down)
         button.click()
+        # self.up = self.driver.find_element_by_xpath('//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[2]/div/div[2]/span').text
+        self.down = self.driver.find_element_by_xpath('//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[3]/div/div[2]/span').text
+        print(self.down)
     
     def tweet_at_provider(self):
         pass
@@ -40,4 +42,4 @@ class InternetSpeedTwitterBot:
 
 bot = InternetSpeedTwitterBot()
 
-# print(bot.test())
+bot.get_internet_speed()
