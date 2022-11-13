@@ -19,7 +19,6 @@ SPEEDTEST_URL = 'https://www.speedtest.net/'
 go_button = '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[1]/a/span[4]'
 down_readout = '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[1]/div/div[2]/span'
 up_readout = '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[2]/div/div[2]/span'
-
 svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
 
 class InternetSpeedTwitterBot:
@@ -34,11 +33,11 @@ class InternetSpeedTwitterBot:
         time.sleep(30)
         button.click()
         time.sleep(30)
-        self.up = self.driver.find_element(By.XPATH,up_readout).text
         self.down = self.driver.find_element(By.XPATH,down_readout).text
-        print(self.down)
-        print(self.up)
-    
+        self.up = self.driver.find_element(By.XPATH,up_readout).text
+        print(f"Download: {self.down} & Upload: {self.up}")
+
+
     def tweet_at_provider(self):
         pass
 
