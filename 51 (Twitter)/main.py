@@ -30,9 +30,10 @@ class InternetSpeedTwitterBot:
 
     def get_internet_speed(self):
         self.driver.get(SPEEDTEST_URL)
-        button = self.driver.find_element(By.XPATH,speed_down)
+        button = self.driver.find_element(By.XPATH,go_button)
+        time.sleep(15)
         button.click()
-        time.sleep(60)
+        time.sleep(30)
         # self.up = self.driver.find_element(By.XPATH,up_readout).text
         self.down = self.driver.find_element(By.XPATH,down_readout).text
         print(self.down)
