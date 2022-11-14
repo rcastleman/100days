@@ -1,5 +1,6 @@
 import os
 import time
+
 from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -45,9 +46,9 @@ class InternetSpeedTwitterBot:
         pass
 
     def test(self):
-        return 'bot is working'
+        # self.driver.get('https://www.google.com/')
+        print('bot is working')
 
 bot = InternetSpeedTwitterBot()
-
 bot.test()
 bot.get_internet_speed()
