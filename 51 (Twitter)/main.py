@@ -34,6 +34,8 @@ class InternetSpeedTwitterBot:
         time.sleep(15)
         self.driver.find_element(By.XPATH,go_button).click()
         time.sleep(30)
+        alert_obj = self.driver.switch_to.alert
+        alert_obj.dismiss()
         # self.driver.find_element(By.XPATH,close_button).click()
         self.down = self.driver.find_element(By.XPATH,down_readout).text
         self.up = self.driver.find_element(By.XPATH,up_readout).text
