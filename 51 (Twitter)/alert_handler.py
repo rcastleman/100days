@@ -26,7 +26,8 @@ print ("Alert shows following message: "+ msg )
 time.sleep(2)
 
 #use the accept() method to accept the alert
-obj.accept()
+# obj.accept()
+obj.dismiss()
 
 print(" Clicked on the OK Button in the Alert Window")
 
