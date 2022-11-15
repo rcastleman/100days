@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 
 load_dotenv()
 
+INSTA = 'https://www.instagram.com/'
 TARGET = 'https://www.instagram.com/paulsoninstitute/'
 
 svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
@@ -22,3 +23,7 @@ PASSWORD = os.environ.get('PASS')
 class InstaFollower:
     def __init__(self):
         self.driver = webdriver.Chrome(service = svce)
+
+    def get_follower_count(self):
+        self.driver.get(INSTA)
+        
