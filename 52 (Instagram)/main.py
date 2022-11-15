@@ -16,3 +16,9 @@ class newClass:
     def __init__(self):
         self.driver = webdriver.Chrome(service = svce)
 
+USERNAME = os.environ.get('USER')
+PASSWORD = os.environ.get('PASS')
+
+class InstaFollower:
+    def __init__(self):
+        self.driver = webdriver.Chrome(service = svce)
