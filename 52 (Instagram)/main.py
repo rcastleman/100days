@@ -8,10 +8,11 @@ from selenium.webdriver.common.keys import Keys
 
 load_dotenv()
 
-TARGET = 
+TARGET = 'https://www.instagram.com/paulsoninstitute/'
 
 svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
 
 class newClass:
     def __init__(self):
         self.driver = webdriver.Chrome(service = svce)
+
