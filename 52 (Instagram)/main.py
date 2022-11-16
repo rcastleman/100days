@@ -10,7 +10,7 @@ from selenium.webdriver.common.keys import Keys
 load_dotenv()
 
 INSTA = 'https://www.instagram.com/accounts/login/'
-TARGET = 'https://www.instagram.com/paulsoninstitute/'
+TARGET = 'paulsoninstitute/'
 
 svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
 
@@ -40,6 +40,20 @@ class InstaFollower():
 
         time.sleep(2)
         password.send_keys(Keys.ENTER)
+
+    def find_followers(self):
+        time.sleep(5)
+        self.driver.get(f"https://www.instagram.com/{TARGET}")
+
+        time.sleep(2)
+        followers = self.driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a')
+        followers.click()
+
+        time.sleep(2)
+        modal = self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div[2]')
+        for i in range(10):
+            self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
+            time.sleep(2)
 
 bot = InstaFollower()
 bot.login()
