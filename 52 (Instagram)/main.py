@@ -31,8 +31,8 @@ class InstaFollower:
         self.driver.get(INSTA)
         time.sleep(5)
 
-        username = self.driver.find_element_by_name("username")
-        password = self.driver.find_element_by_name("password")
+        username = self.driver.find_element(By.NAME,"username")
+        password = self.driver.find_element(By.NAME,"password")
 
         username.send_keys(USERNAME)
         password.send_keys(PASSWORD)
