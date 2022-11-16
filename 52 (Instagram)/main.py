@@ -20,7 +20,7 @@ class newClass:
 USERNAME = os.environ.get('USER')
 PASSWORD = os.environ.get('PASS')
 
-class InstaFollower:
+class InstaFollower():
     def __init__(self):
         self.driver = webdriver.Chrome(service = svce)
 
@@ -40,3 +40,7 @@ class InstaFollower:
         time.sleep(2)
         password.send_keys(Keys.ENTER)
 
+bot = InstaFollower()
+bot.login()
+# bot.find_followers()
+# bot.follow()
