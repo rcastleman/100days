@@ -19,7 +19,7 @@ svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/ch
 USERNAME = os.environ.get('USER')
 PASSWORD = os.environ.get('PASS')
 
-FOLLOWERS_BUTTON = 'x1i10hfl'
+FOLLOWERS_BUTTON = "//*[text()='Follow']"
 
 class InstaFollower():
     def __init__(self):
@@ -46,14 +46,14 @@ class InstaFollower():
         self.driver.get(f"https://www.instagram.com/{TARGET}")
 
         time.sleep(2)
-        followers = self.driver.find_element(By.CLASS_NAME,FOLLOWERS_BUTTON)
+        followers = self.driver.find_element(By.XPATH,FOLLOWERS_BUTTON)
         followers.click()
 
-        time.sleep(2)
-        modal = self.driver.find_element(By.XPATH,'/html/body/div[4]/div/div/div[2]')
-        for i in range(10):
-            self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
-            time.sleep(2)
+        # time.sleep(2)
+        # modal = self.driver.find_element(By.XPATH,'/html/body/div[4]/div/div/div[2]')
+        # for i in range(10):
+        #     self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
+        #     time.sleep(2)
 
     def follow(self):
         all_buttons = self.driver.find_elements_by(By.CSS_SELECTOR,"li button")
