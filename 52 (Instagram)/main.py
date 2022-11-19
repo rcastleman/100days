@@ -44,7 +44,7 @@ class InstaFollower():
         self.driver.get(f"https://www.instagram.com/{TARGET}")
 
         time.sleep(2)
-        followers = self.driver.find_element_by(By.XPATH,'//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a')
+        followers = self.driver.find_element(By.XPATH,'//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a')
         followers.click()
 
         time.sleep(2)
