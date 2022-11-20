@@ -12,14 +12,14 @@ from selenium.common.exceptions import ElementClickInterceptedException
 load_dotenv()
 
 INSTA = 'https://www.instagram.com/accounts/login/'
-TARGET = 'paulsoninstitute/followers/'
+TARGET = 'paulsoninstitute/'
 
 svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
 
 USERNAME = os.environ.get('USER')
 PASSWORD = os.environ.get('PASS')
 
-# FOLLOWERS_BUTTON = 
+FOLLOWERS_BUTTON = 'self.browser.find_element_by_xpath("//a[contains(@href, '/following')]").click()
 
 class InstaFollower():
     def __init__(self):
