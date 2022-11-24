@@ -26,6 +26,8 @@ FOLLOWERS_BUTTON = "//a[contains(@href, 'followers')]"
 # FOLLOWERS_BUTTON = '//*[@id="mount_0_0_WH"]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div[2]/section/main/div/ul/li[2]/a'
 # FOLLOWERS_BUTTON = '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div[2]/section/main/div/ul/li[2]/a'
 
+FOLLOWERS_WINDOW = '//*[@id="mount_0_0_Xh"]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[1]/div/div[1]'
+
 class InstaFollower():
     def __init__(self):
         self.driver = webdriver.Chrome(service = svce)
@@ -53,8 +55,9 @@ class InstaFollower():
         time.sleep(6)
         self.driver.find_element(By.XPATH,FOLLOWERS_BUTTON).click()
 
-        time.sleep(2)
+        time.sleep(5)
         modal = self.driver.find_element(By.XPATH,'/html/body/div[4]/div/div/div[2]')
+        # modal = self.driver.find_element(By.XPATH,FOLLOWERS_WINDOW)
         for i in range(10):
             self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
             time.sleep(2)
@@ -72,4 +75,4 @@ class InstaFollower():
 bot = InstaFollower()
 bot.login()
 bot.find_followers()
-# bot.follow()
+bot.follow()
