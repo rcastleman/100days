@@ -19,8 +19,9 @@ svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/ch
 USERNAME = os.environ.get('USER')
 PASSWORD = os.environ.get('PASS')
 
-# FOLLOWERS_BUTTON = "//a[contains(@href, 'followers')]"
-FOLLOWERS_BUTTON = '//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a'
+# FOLLOWERS_BUTTON = '//*[@id="mount_0_0_WH"]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div[2]/section/main/div/ul/li[2]/a/div/span'
+FOLLOWERS_BUTTON = "//a[contains(@href, 'followers')]"
+# FOLLOWERS_BUTTON = '//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a'
 # FOLLOWERS_BUTTON = '/html/body/div[1]/section/main/div/header/section/ul/li[2]/a'
 # FOLLOWERS_BUTTON = '//*[@id="mount_0_0_WH"]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div[2]/section/main/div/ul/li[2]/a'
 # FOLLOWERS_BUTTON = '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div[2]/section/main/div/ul/li[2]/a'
