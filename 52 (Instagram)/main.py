@@ -8,7 +8,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import ElementClickInterceptedException
 
-
 load_dotenv()
 
 INSTA = 'https://www.instagram.com/accounts/login/'
@@ -55,7 +54,7 @@ class InstaFollower():
         time.sleep(6)
         self.driver.find_element(By.XPATH,FOLLOWERS_BUTTON).click()
 
-        time.sleep(5)
+        time.sleep(6)
         modal = self.driver.find_element(By.XPATH,'/html/body/div[4]/div/div/div[2]')
         # modal = self.driver.find_element(By.XPATH,FOLLOWERS_WINDOW)
         for i in range(10):
