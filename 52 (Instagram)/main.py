@@ -50,14 +50,14 @@ class InstaFollower():
         time.sleep(5)
         self.driver.get(f"https://www.instagram.com/{TARGET}")
 
-        time.sleep(5)
+        time.sleep(6)
         self.driver.find_element(By.XPATH,FOLLOWERS_BUTTON).click()
 
-        # time.sleep(2)
-        # modal = self.driver.find_element(By.XPATH,'/html/body/div[4]/div/div/div[2]')
-        # for i in range(10):
-        #     self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
-        #     time.sleep(2)
+        time.sleep(2)
+        modal = self.driver.find_element(By.XPATH,'/html/body/div[4]/div/div/div[2]')
+        for i in range(10):
+            self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
+            time.sleep(2)
 
     def follow(self):
         all_buttons = self.driver.find_elements_by(By.CSS_SELECTOR,"li button")
