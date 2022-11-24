@@ -50,7 +50,7 @@ class InstaFollower():
         time.sleep(5)
         self.driver.get(f"https://www.instagram.com/{TARGET}")
 
-        time.sleep(2)
+        time.sleep(5)
         self.driver.find_element(By.XPATH,FOLLOWERS_BUTTON).click()
 
         # time.sleep(2)
