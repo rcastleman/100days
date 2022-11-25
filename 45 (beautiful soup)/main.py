@@ -11,7 +11,7 @@ soup = BeautifulSoup(contents,"html.parser")
 
 # print(soup.prettify())
 
-# print(soup.a)
+print(soup.a)
 
 all_anchor_tags = soup.find_all(name="a")
 # print(all_anchor_tags)
@@ -23,5 +23,5 @@ all_anchor_tags = soup.find_all(name="a")
 # heading = soup.find(id = "name")
 # print(heading)
 
-section_heading = soup.find(class_ = "heading")
-print(section_heading.name)
+# section_heading = soup.find(class_ = "heading")
+# print(section_heading.name)
