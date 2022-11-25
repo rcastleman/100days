@@ -10,6 +10,8 @@ from selenium.common.exceptions import ElementClickInterceptedException
 
 load_dotenv()
 
+LIST_ID = "search-page-list-container"
+
 svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/chromedriver")
 
 USERNAME = os.environ.get('USER')
