@@ -15,3 +15,4 @@ svce = Service("/Users/randycastleman/Dropbox/Mac/Documents/local_code/chrome/ch
 USERNAME = os.environ.get('USER')
 PASSWORD = os.environ.get('PASS')
 
+FORM = 'https://forms.gle/WZPiFN9neKV8Gegh8'
