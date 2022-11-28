@@ -11,7 +11,11 @@ website_html = response.text
 
 soup = BeautifulSoup(website_html,"html.parser")
 
-all_link_elements = soup.select(".list-card-top a")
+LISTINGS = ''
+
+
+# all_link_elements = soup.select(".list-card-top a")
+all_link_elements = soup.select("photo-cards with_constellation a")
 
 all_links = []
 for link in all_link_elements:
@@ -22,7 +26,7 @@ for link in all_link_elements:
     else:
         all_links.append(href)
 
-# print(all_links)
+print(all_links)
 # print(soup.prettify())
 
 import os
