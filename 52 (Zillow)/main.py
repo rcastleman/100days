@@ -13,7 +13,8 @@ soup = BeautifulSoup(website_html,"html.parser")
 
 all_link_elements = soup.select(".list-card-top a")
 
-print(soup.prettify())
+print(all_link_elements)
+# print(soup.prettify())
 
 import os
 import time
