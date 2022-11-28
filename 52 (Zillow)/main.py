@@ -7,15 +7,15 @@ URL = 'https://www.zillow.com/homes/for_rent/1-_beds/?searchQueryState=%7B%22pag
 
 response = requests.get(URL)
 
-website_html = response.text
+site_data = response.text
 
-soup = BeautifulSoup(website_html,"html.parser")
+soup = BeautifulSoup(site_data,"html.parser")
 
-LISTINGS = ''
+LISTINGS_XPATH = '//*[@id="grid-search-results"]/ul'
 
-
-# all_link_elements = soup.select(".list-card-top a")
-all_link_elements = soup.select("photo-cards with_constellation a")
+# all_link_elements = soup.select(".list-card-top a") # solution's address, which doesn't work
+all_link_elements = soup.findAll("grid-search-results ul")
+print(f'all_link_elements = {all_link_elements}')
 
 all_links = []
 for link in all_link_elements:
@@ -26,7 +26,7 @@ for link in all_link_elements:
     else:
         all_links.append(href)
 
-print(all_links)
+# print(all_links)
 # print(soup.prettify())
 
 import os
