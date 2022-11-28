@@ -11,6 +11,8 @@ website_html = response.text
 
 soup = BeautifulSoup(website_html,"html.parser")
 
+all_link_elements = soup.select(".list-card-top a")
+
 print(soup.prettify())
 
 import os
