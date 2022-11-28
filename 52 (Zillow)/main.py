@@ -15,8 +15,8 @@ LISTINGS_XPATH = '//*[@id="grid-search-results"]/ul'
 LISTINGS_SELECTOR = '#grid-search-results > ul'
 FIRST_LISTING = '#grid-search-results > ul > li:nth-child(1)'
 
-all_link_elements = soup.select(".list-card-top a") # solution's address, which doesn't work
-# all_link_elements = soup.findAll(LISTINGS_XPATH)
+# all_link_elements = soup.select(".list-card-top a") # solution's address, which doesn't work
+all_link_elements = soup.findAll('.grid-search-result ul')
 print(f'all_link_elements = {all_link_elements}')
 
 all_links = []
