@@ -12,9 +12,10 @@ site_data = response.text
 soup = BeautifulSoup(site_data,"html.parser")
 
 LISTINGS_XPATH = '//*[@id="grid-search-results"]/ul'
+LISTINGS_SELECTOR = '#grid-search-results > ul'
 
 # all_link_elements = soup.select(".list-card-top a") # solution's address, which doesn't work
-all_link_elements = soup.findAll("grid-search-results ul")
+all_link_elements = soup.select('#grid-search-results > ul')
 print(f'all_link_elements = {all_link_elements}')
 
 all_links = []
