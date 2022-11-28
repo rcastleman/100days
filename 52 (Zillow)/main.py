@@ -13,7 +13,16 @@ soup = BeautifulSoup(website_html,"html.parser")
 
 all_link_elements = soup.select(".list-card-top a")
 
-print(all_link_elements)
+all_links = []
+for link in all_link_elements:
+    href = link["href"]
+    print(href)
+    if "http" not in href:
+        all_links.append(f"https://www.zillow.com{href}")
+    else:
+        all_links.append(href)
+
+# print(all_links)
 # print(soup.prettify())
 
 import os
