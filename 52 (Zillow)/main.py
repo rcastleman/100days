@@ -28,14 +28,14 @@ response = requests.get(URL,headers=header)
 site_data = response.text
 soup = BeautifulSoup(site_data,"html.parser")
 
-LISTINGS_XPATH = '//*[@id="grid-search-results"]/ul'
-LISTINGS_SELECTOR = '#grid-search-results > ul'
-FIRST_LISTING = '#grid-search-results > ul > li:nth-child(1)'
+# LISTINGS_XPATH = '//*[@id="grid-search-results"]/ul'
+# LISTINGS_SELECTOR = '#grid-search-results > ul'
+# FIRST_LISTING = '#grid-search-results > ul > li:nth-child(1)'
 
 
-# all_link_elements = soup.select(".list-card-top a") # solution's address, which doesn't work
-all_link_elements = soup.findAll(LISTINGS_SELECTOR)
-# print(f'all_link_elements = {all_link_elements}')
+all_link_elements = soup.select(".list-card-top a")
+# all_link_elements = soup.findAll(FIRST_LISTING)
+print(f'all_link_elements = {all_link_elements}')
 
 all_links = []
 for link in all_link_elements:
@@ -46,7 +46,7 @@ for link in all_link_elements:
     else:
         all_links.append(href)
 
-print(soup.prettify())
+# print(soup.prettify())
 
 LIST_ID = "search-page-list-container"
 
