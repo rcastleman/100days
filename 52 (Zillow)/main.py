@@ -13,6 +13,18 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import ElementClickInterceptedException
 
+
+import sys
+import numpy as np
+import pandas as pd
+import regex as re
+import requests
+import lxml
+from lxml.html.soupparser import fromstring
+import prettify
+import numbers
+import htmltext
+
 load_dotenv()
 
 
