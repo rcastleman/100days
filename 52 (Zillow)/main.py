@@ -50,13 +50,13 @@ response = requests.get(URL,headers=req_headers)
 site_data = response.text
 soup = BeautifulSoup(site_data,"html.parser")
 
-# LISTINGS_XPATH = '//*[@id="grid-search-results"]/ul'
+LISTINGS_XPATH = '//*[@id="grid-search-results"]/ul'
 # LISTINGS_SELECTOR = '#grid-search-results > ul'
-# FIRST_LISTING = '#grid-search-results > ul > li:nth-child(1)'
+LISTINGS_SELECTOR = '#grid-search-results > div.search-page-list-header > h1'
+FIRST_LISTING = '#grid-search-results > ul > li:nth-child(1)'
 
-
-all_link_elements = soup.select(".list-card-top a")
-# all_link_elements = soup.findAll(FIRST_LISTING)
+# all_link_elements = soup.select(".list-card-top a")
+all_link_elements = soup.findAll(LISTINGS_SELECTOR)
 print(f'all_link_elements = {all_link_elements}')
 
 all_links = []
