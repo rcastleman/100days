@@ -13,7 +13,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import ElementClickInterceptedException
 
-
 import sys
 import numpy as np
 import pandas as pd
@@ -25,7 +24,6 @@ import numbers
 # import htmltext
 
 load_dotenv()
-
 
 #--------- SCRAPE ALL LISTINGS ----------- #
 # header = {
