@@ -56,8 +56,10 @@ soup = BeautifulSoup(site_data,"html.parser")
 # FIRST_LISTING = '#grid-search-results > ul > li:nth-child(1)'
 STREET_LISTINGS = '#result-details > div > ul'
 
+
 # all_link_elements = soup.select(".list-card-top a")
-all_link_elements = soup.findAll(STREET_LISTINGS)
+# all_link_elements = soup.findAll(STREET_LISTINGS)
+all_link_elements = soup.find(class_="SearchResultPage")
 print(f'all_link_elements = {all_link_elements}')
 
 # all_links = []
