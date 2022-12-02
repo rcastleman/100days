@@ -6,4 +6,4 @@ with open ("test2.html") as file:
 
 soup = BeautifulSoup(contents,"html.parser")
 
-print(soup.ul)
+print(soup.li)
