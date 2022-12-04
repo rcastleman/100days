@@ -46,15 +46,22 @@ req_headers = {
 URL ='https://streeteasy.com/1-bedroom-apartments-for-rent/upper-west-side/status:listed%7Cprice:-4000%7Csqft%3E=600%7Cbaths%3E=1%7Camenities:elevator,doorman,laundry'
 
 
-response = requests.get(URL,headers=req_headers)
-site_data = response.text
-soup = BeautifulSoup(site_data,"html.parser")
+# response = requests.get(URL,headers=req_headers)
+# site_data = response.text
+# soup = BeautifulSoup(site_data,"html.parser")
 
 # LISTINGS_XPATH = '//*[@id="grid-search-results"]/ul'
 # LISTINGS_SELECTOR = '#grid-search-results > ul'
 # LISTINGS_SELECTOR = '#grid-search-results > div.search-page-list-header > h1'
 # FIRST_LISTING = '#grid-search-results > ul > li:nth-child(1)'
 STREET_LISTINGS = '#result-details > div > ul'
+
+#------- new approach ---------- #
+# from https://www.geeksforgeeks.org/beautifulsoup-find-all-li-in-ul/
+
+html = requests.get(URL).content
+
+
 
 
 # all_link_elements = soup.select(".list-card-top a")
