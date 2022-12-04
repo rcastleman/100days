@@ -60,8 +60,9 @@ STREET_LISTINGS = '#result-details > div > ul'
 # from https://www.geeksforgeeks.org/beautifulsoup-find-all-li-in-ul/
 
 html = requests.get(URL).content
-
-
+data = BeautifulSoup(html,"html.parser")
+parent = data.find("body").find("ul")
+text = list(parent.descendants)
 
 
 # all_link_elements = soup.select(".list-card-top a")
