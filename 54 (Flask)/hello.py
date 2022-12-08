@@ -12,11 +12,3 @@ def say_bye():
 if __name__ == "__main__":
     app.run()
 
-    def delay_decorator(function):
-    def wrapper_function():
-        time.sleep(2)
-        #Do something before
-        function()
-        function()
-        #Do something after
-    return wrapper_function
