@@ -19,12 +19,26 @@ result = calculate(multiply,2,3)
 
 #Nested functions
 
+# def outer_function():
+#     print("I am Outer")
+
+#     def nested_function():
+#         print("I am Inner")
+    
+#     nested_function()
+
+# outer_function()
+
+#return a function from another function
+
 def outer_function():
     print("I am Outer")
 
     def nested_function():
-        print("I'm Inner")
+        print("I am Inner")
     
-    nested_function()
+    return nested_function
 
-outer_function()
+inner_function = outer_function()
+inner_function()
+
