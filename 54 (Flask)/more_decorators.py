@@ -1,11 +1,11 @@
 import time
 
-def decorator_function(function):
+def delay(function):
     def wrapper_function():
+        time.sleep(2)
         function()
     return wrapper_function
 
-
+@delay
 def say_hello():
-    time.sleep(2)
     print("Hello")
