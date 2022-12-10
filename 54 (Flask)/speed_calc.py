@@ -22,3 +22,12 @@ def slow_function():
         
 fast_function()
 slow_function()
+
+
+@speed_calc_decorator
+fast = fast_function()
+
+@speed_calc_decorator
+slow = slow_function()
+
+print(f"fast function run speed: {fast}\nslow function run speed: {slow}")
