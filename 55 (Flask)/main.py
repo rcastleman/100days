@@ -10,7 +10,7 @@ def hello_world():
 def say_bye():
     return 'bye'
 
-@app.route("/username/<name>")
+@app.route("/username/<path:name>")
 def greet(name):
     return f'Hello {name}'
 
