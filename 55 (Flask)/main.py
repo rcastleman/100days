@@ -4,7 +4,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return '<h2 style = "text-align: center"> Hello, World!</h2><p>This is a new paragrph.</p>'
+    return '<h2 style = "text-align: center"> Hello, World!</h2>'\
+        '<p>This is a new paragrph.</p>'\
+        '<img src = "https://cdn.britannica.com/36/178136-050-7F77D46B/village-Alpine-valley-canton-Saint-Moritz-Engadin.jpg">'
 
 @app.route('/bye')
 def say_bye():
