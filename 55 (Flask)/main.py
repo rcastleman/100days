@@ -2,11 +2,15 @@ from flask import Flask
 
 app = Flask(__name__)
 
-def make_bold(function)
+def make_bold(function):
     def wrapper():
         return '<b>' +  function() + '</b>'
     return wrapper
 
+def make_italics(function):
+    def wrapper():
+        return '<i>' +  function() + '</i>'
+    return wrapper
 
 @app.route('/')
 def hello_world():
@@ -14,8 +18,9 @@ def hello_world():
         '<p>This is a new paragraph.</p>'\
         '<img src = "https://media.giphy.com/media/hSoFXPq2J3PWvYKyUn/giphy.gif" width=400>'
 
-@make_bold()
 @app.route('/bye')
+@make_bold
+@make_italics
 def say_bye():
     return 'bye'
 
