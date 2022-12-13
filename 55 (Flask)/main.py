@@ -2,9 +2,10 @@ from flask import Flask
 
 app = Flask(__name__)
 
-def make_bold(func):
+def make_bold(function)
     def wrapper():
-        print(f"<b> {func()} </b>")
+        return '<b>' +  function() + '</b>'
+    return wrapper
 
 
 @app.route('/')
@@ -13,10 +14,8 @@ def hello_world():
         '<p>This is a new paragraph.</p>'\
         '<img src = "https://media.giphy.com/media/hSoFXPq2J3PWvYKyUn/giphy.gif" width=400>'
 
+@make_bold()
 @app.route('/bye')
-@app.make_bold
-# @app.make_emphasis
-# @app.make_underline
 def say_bye():
     return 'bye'
 
