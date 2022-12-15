@@ -7,7 +7,6 @@ app = Flask(__name__)
 def hello_world():
     return render_template('randy.html')
 
-
 @app.route('/bye')
 def say_bye():
     return 'bye'
