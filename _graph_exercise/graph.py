@@ -14,10 +14,29 @@ class Graph:
     
     def get_paths(self,start,end,path=[]):
         path = path + [start]
+
+        #simplest case: start = end
         if start == end:
             return [path]
+        
+        #simple case: starting point not in dict
         if start not in self.graph_dict:
             return f"There are no routes starting from {start}"
+        
+        #all possible paths
+        paths = []
+
+        #normal case: one or more pathways
+        for node in self.graph_dict[start]:
+            new_paths = self.get_paths(node,end,path)
+            for p in new_paths:
+                paths.append(p)
+        
+        return paths
+
+    def get_shortest_paths(self,start,end,path=[]):
+        if start not in self.graph_dict:
+            return None
 
 
 if __name__ == "__main__":
@@ -28,13 +47,11 @@ if __name__ == "__main__":
         ("Paris","New York"),
         ("Dubai","New York"),
         ("New York","Toronto"),
-        ("London","New York"),
-        ("New York","London"),
     ]
 
 route_graph = Graph(routes)
 
-start = "Toronto"
-end = "Mumbai"
+start = "Mumbai"
+end = "New York"
 
 print(f"Paths between {start} and {end}: {route_graph.get_paths(start,end)}")
