@@ -10,9 +10,9 @@ class Graph:
                 self.graph_dict[start].append(end)
             else:
                 self.graph_dict[start] = [end]
-        print(f"Graph Dictionary: {self.graph_dict}")
+        # print(f"Graph Dictionary: {self.graph_dict}")
     
-    def get_paths(start,end,path=[]):
+    def get_paths(self,start,end,path=[]):
         path = path + [start]
         if start == end:
             return [path]
@@ -35,4 +35,4 @@ route_graph = Graph(routes)
 start = "Mumbai"
 end = "Mumbai"
 
-print(f"Paths between {start} adn {end}: {route_graph.get_paths(start,end)}")
+print(f"Paths between {start} and {end}: {route_graph.get_paths(start,end)}")
