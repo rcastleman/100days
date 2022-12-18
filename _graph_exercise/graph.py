@@ -1,7 +1,9 @@
 class Graph:
     def __init__(self,edges) -> None:
         self.edges = edges
-
+        self.graph_dict = {}
+        for start,end in self.edges:
+            
 
 if __name__ == "__main__":
     routes = [
@@ -14,4 +16,3 @@ if __name__ == "__main__":
     ]
 
 route_graph = Graph(routes)
-
