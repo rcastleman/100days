@@ -35,9 +35,27 @@ class Graph:
         return paths
 
     def get_shortest_paths(self,start,end,path=[]):
-        if start not in self.graph_dict:
-            return None
+        
+        path = path + [start]
+        
+        shortest_path = None
+        
+        #simplest case
+        if start == end:
+            return path
 
+        #start point not in dict
+        if start not in self.graph_dict:
+            return f"There are no routes starting from {start}"
+        
+        #regular recursive case
+        for node in self.graph_dict[start]:
+            if node not in path:
+                sp = self.get_shortest_paths(node,end,path)
+                if shortest_path is None or len(sp) < len(shortest_path):
+                    shortest_path = sp
+
+        return shortest_path
 
 if __name__ == "__main__":
     routes = [
@@ -51,7 +69,8 @@ if __name__ == "__main__":
 
 route_graph = Graph(routes)
 
-start = "Mumbai"
+start = "Paris"
 end = "New York"
 
-print(f"Paths between {start} and {end}: {route_graph.get_paths(start,end)}")
+# print(f"Paths between {start} and {end}: {route_graph.get_paths(start,end)}")
+print(f"The shortest path between {start} and {end}: {route_graph.get_shortest_paths(start,end)}")
