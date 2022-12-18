@@ -16,6 +16,8 @@ class Graph:
         path = path + [start]
         if start == end:
             return [path]
+        if start not in self.graph_dict:
+            return f"There are no routes starting from {start}"
 
 
 if __name__ == "__main__":
@@ -32,7 +34,7 @@ if __name__ == "__main__":
 
 route_graph = Graph(routes)
 
-start = "Mumbai"
+start = "Toronto"
 end = "Mumbai"
 
 print(f"Paths between {start} and {end}: {route_graph.get_paths(start,end)}")
