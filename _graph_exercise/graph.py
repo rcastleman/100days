@@ -1,3 +1,7 @@
+class Graph:
+    def __init__(self,edges) -> None:
+        self.edges = edges
+
 
 if __name__ == "__main__":
     routes = [
@@ -8,4 +12,6 @@ if __name__ == "__main__":
         ("Dubai","New York"),
         ("New York","Toronto"),
     ]
+
+route_graph = Graph(routes)
 
