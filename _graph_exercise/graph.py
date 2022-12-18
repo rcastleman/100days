@@ -11,6 +11,11 @@ class Graph:
             else:
                 self.graph_dict[start] = [end]
         print(f"Graph Dictionary: {self.graph_dict}")
+    
+    def get_paths(start,end,path=[]):
+        path = path + [start]
+        if start == end:
+            return [path]
 
 
 if __name__ == "__main__":
@@ -21,6 +26,13 @@ if __name__ == "__main__":
         ("Paris","New York"),
         ("Dubai","New York"),
         ("New York","Toronto"),
+        ("London","New York"),
+        ("New York","London"),
     ]
 
 route_graph = Graph(routes)
+
+start = "Mumbai"
+end = "Mumbai"
+
+print(f"Paths between {start} adn {end}: {route_graph.get_paths(start,end)}")
