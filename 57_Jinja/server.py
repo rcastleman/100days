@@ -14,15 +14,20 @@ def home():
     return render_template("index.html",num=random_number,year=year)
 
 #------ Name Route--------#
-URL = 'https://api.agify.io?name='
-
+AGIFY = 'https://api.agify.io?name='
+GENDERIZE = 'https://api.genderize.io?name='
 
 @app.route('/guess/<input_name>')
 def guess_name(input_name):
-    response = requests.get(URL+input_name)
-    data = response.json()
-    age = data['age']
-    return render_template('name.html',name=input_name.title(),age=age)
+    age_response = requests.get(AGIFY+input_name)
+    age_data = age_response.json()
+    age = age_data['age']
+
+    gender_response = request.get(GENDERIZE+input_name)
+    gender_data = gender_response.json()
+    gender = gender_data['gender']
+
+    return render_template('name.html',name=input_name.title(),age=age,gender=gender)
  
 if __name__ == "__main__":
     app.run(debug=True)
