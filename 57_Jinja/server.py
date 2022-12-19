@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask,render_template
 import random
 import datetime
 year = datetime.date.today().year
