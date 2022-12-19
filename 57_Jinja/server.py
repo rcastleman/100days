@@ -3,7 +3,6 @@ import random
 import datetime
 import requests
 
-
 app = Flask(__name__)
 
 year = datetime.date.today().year
@@ -13,17 +12,18 @@ def home():
     random_number = random.randint(1,10)
     return render_template("index.html",num=random_number,year=year)
 
-#------ Name Route--------#
+#------ Age & Gender Route--------#
 AGIFY = 'https://api.agify.io?name='
 GENDERIZE = 'https://api.genderize.io?name='
 
 @app.route('/guess/<input_name>')
-def guess_name(input_name):
+def guess(input_name):
+    
     age_response = requests.get(AGIFY+input_name)
     age_data = age_response.json()
     age = age_data['age']
 
-    gender_response = request.get(GENDERIZE+input_name)
+    gender_response = requests.get(GENDERIZE+input_name)
     gender_data = gender_response.json()
     gender = gender_data['gender']
 
