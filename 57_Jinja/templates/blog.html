@@ -6,10 +6,10 @@
         <link rel="stylesheet" href="static/styles.css">
     </head>
     <body>
-        <p>
-            {{posts}}
-        </p>
-
+        {% for blog_post in posts: %}
+        <h1>{{blog_post["title"]}}</h1>
+        <h2>{{blog_post["subtitle"]}}</h2>
+        {% endfor %}
     </body>
     <footer>
         <p>
