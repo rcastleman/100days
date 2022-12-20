@@ -7,9 +7,11 @@
     </head>
     <body>
         {% for blog_post in posts: %}
-        <h1>{{blog_post["title"]}}</h1>
-        <h2>{{blog_post["subtitle"]}}</h2>
-        <h3><i>{{blog_post["body"]}}></i>i></h3>
+            {% if blog_post['id'] == 2: %}
+            <h1>{{blog_post["title"]}}</h1>
+            <h2>{{blog_post["subtitle"]}}</h2>
+            <h3><i>{{blog_post["body"]}}</i></h3>
+            {% endif %} 
         {% endfor %}
     </body>
     <footer>
