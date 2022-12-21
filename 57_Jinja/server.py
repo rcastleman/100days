@@ -31,7 +31,7 @@ def guess(input_name):
  
 #---------- blog posts ------------- #
 @app.route('/blog')
-def blog():
+def get_blog():
     blog_url = 'https://api.npoint.io/1e222d179ee8b4e58a05'
     response = requests.get(blog_url)
     all_posts = response.json()
