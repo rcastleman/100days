@@ -17,7 +17,7 @@
 
                 <h1>{{blog_post["title"]}}</h1>
                 <h2>{{blog_post["subtitle"]}}</h2>
-                <a href="templates/post.html">Read</a>
+                <a href="{{ url_for('show_post', index=post.id) }}">Read</a>
 
             {% endfor %}
         </div>
