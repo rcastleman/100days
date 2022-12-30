@@ -2,12 +2,13 @@ from flask import Flask, render_template
 from post import Post
 import requests
 
-app = Flask(__name__)
+posts = requests.get("https://api.npoint.io/5abcca6f4e39b4955965").json()
+post_objects = []
+for post in posts:
+    post_obj = Post(post["id"], post["title"], post["subtitle"], post["body"])
+    post_objects.append(post_obj)
 
-blog_url = 'https://api.npoint.io/1e222d179ee8b4e58a05'
-response = requests.get(blog_url)
-# all_posts = response.json()
-post_objects = "static/blog_text.txt"
+app = Flask(__name__)
 
 @app.route('/')
 def get_all_posts():
