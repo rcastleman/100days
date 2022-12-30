@@ -7,7 +7,7 @@ app = Flask(__name__)
 blog_url = 'https://api.npoint.io/1e222d179ee8b4e58a05'
 response = requests.get(blog_url)
 # all_posts = response.json()
-all_post = "static/blog_text.txt"
+all_posts = "static/blog_text.txt"
 
 @app.route('/')
 def home():
